@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Post
+from .models import Article
 
 
 def post_list(request):
-    posts = Post.objects.order_by('-created_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    articles = Article.objects.order_by('-created_date')
+    return render(request, 'blog/post_list.html', {'articles': articles})
