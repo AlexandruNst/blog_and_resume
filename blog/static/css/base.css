@@ -48,8 +48,26 @@
 }
 
 /* Rounded items */
-#rounded {
-  border-radius: 13px;
+.-rounded {
+  border-radius: 9px;
   outline: none;
   box-shadow: none;
+}
+
+/* Buttons */
+.-bttn {
+  padding: 6px 20px;
+}
+
+.-bttn-transparent {
+  border: 2px solid white;
+  color: white;
+  margin-top: 10px;
+  transition: 300ms;
+}
+
+.-bttn-transparent:hover {
+  color: #4b83eb;
+  background-color: white;
+  text-decoration: none;
 }
