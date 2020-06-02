@@ -1,7 +1,48 @@
-/* body,
-html {
-  height: 100%;
-} */
 .padding-for-footer {
   padding-bottom: 300px;
+}
+
+/* Fonts */
+* {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+.font-semi-bold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-title {
+  font-family: "Maven Pro", sans-serif;
+}
+
+/* Links */
+
+#ud-link {
+  color: #343434;
+  position: relative;
+  transition: 300ms;
+}
+
+#ud-link:hover {
+  color: #5672ff;
+}
+
+#ud-link:after {
+  content: "";
+  width: 0px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  left: -2.5%;
+  background: #5672ff;
+  transition: 300ms;
+}
+
+#ud-link:hover:after {
+  width: 105%;
 }

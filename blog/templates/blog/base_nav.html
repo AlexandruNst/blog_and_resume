@@ -8,7 +8,7 @@
 
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
   <a class="navbar-brand" href="#">
     <img src="{% static 'res/img/logo.svg' %}" alt="">
   </a>
@@ -17,15 +17,15 @@
   </button>
 
   <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto justify-content-center text-center">
-      <li class="nav-item mr-5">
-        <a class="nav-link" href="#">Articles <span class="sr-only">(current)</span></a>
+    <ul class="navbar-nav mx-auto text-center">
+      <li class="nav-item">
+        <a id="ud-link" class="nav-link font-semi-bold" href="#">Articles <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item mr-5">
-        <a class="nav-link" href="#">Resume</a>
+      <li class="nav-item">
+        <a id="ud-link" class="nav-link font-semi-bold" href="#">Resume</a>
       </li>
-      <li class="nav-item mr-5">
-        <a class="nav-link" href="#">About</a>
+      <li class="nav-item">
+        <a id="ud-link" class="nav-link font-semi-bold" href="#">About</a>
       </li>
     
     </ul>
