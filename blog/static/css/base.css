@@ -29,7 +29,7 @@
 }
 
 #ud-link:hover {
-  color: #5672ff;
+  color: #4b83eb;
 }
 
 #ud-link:after {
@@ -39,7 +39,7 @@
   display: block;
   position: absolute;
   left: -2.5%;
-  background: #5672ff;
+  background: #4b83eb;
   transition: 300ms;
 }
 

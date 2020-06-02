@@ -1,4 +1,9 @@
 footer {
-  background-color: cornflowerblue;
+  background-color: #4b83eb;
   height: 300px;
+  color: white;
+}
+
+footer p {
+  font-size: 1rem;
 }
