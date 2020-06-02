@@ -8,7 +8,7 @@
 
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
   <a class="navbar-brand" href="#">
     <img src="{% static 'res/img/logo.svg' %}" alt="">
   </a>
@@ -17,21 +17,25 @@
   </button>
 
   <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto justify-content-center text-center">
-      <li class="nav-item mr-5">
-        <a class="nav-link" href="#">Articles <span class="sr-only">(current)</span></a>
+    <ul class="navbar-nav mx-auto text-center">
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="font-semi-bold" id="ud-link">Articles</span> <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item mr-5">
-        <a class="nav-link" href="#">Resume</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="font-semi-bold" id="ud-link">Resume</span></a>
       </li>
-      <li class="nav-item mr-5">
-        <a class="nav-link" href="#">About</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span class="font-semi-bold" id="ud-link">About</span></a>
       </li>
     
     </ul>
-    <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4">
-      <input class="form-control w-100" type="search" placeholder="Search articles..." aria-label="Search">
-      {% comment %} <i class="fas fa-search"></i> {% endcomment %}
+    <form id="nav-form" class="form-inline my-2 my-lg-0 ml-0 ml-lg-4">
+      <div class="input-group w-100">
+        <input type="search" id="rounded-input" class="form-control" placeholder="Search articles..." aria-label="Search articles" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2"> <i class="fas fa-search"></i></span>
+        </div>
+      </div>
     </form>
   </div>
 </nav>
