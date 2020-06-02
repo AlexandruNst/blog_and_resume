@@ -46,3 +46,10 @@
 #ud-link:hover:after {
   width: 105%;
 }
+
+/* Rounded items */
+#rounded {
+  border-radius: 13px;
+  outline: none;
+  box-shadow: none;
+}
