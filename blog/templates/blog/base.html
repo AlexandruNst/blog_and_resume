@@ -34,14 +34,16 @@
   <body>
     {% block navbar %} {% endblock navbar %}
 
-    <div class="content">
-        <h1>helo 2
+    <div class="content py-5">
+        {% comment %} <h1>helo 2
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed hic odit quo dicta maiores, quaerat quam odio iure beatae tempora atque saepe, laudantium laborum neque aliquam magnam minima voluptatibus qui!
             Sed, impedit. Doloremque similique accusamus, provident quia officia ad ducimus dicta quidem molestiae. Nobis ratione aliquam, ipsa vel voluptatibus, sint magni tempora assumenda, quia consequuntur sit deserunt mollitia nisi id?
             Dolorum Doloremque similique accusamus, provident quia officia ad ducimus dicta quidem molestiae. Nobis ratione aliquam, ipsa vel voluptatibus, sint magni tempora assumenda, quia consequuntur sit deserunt mollitia nisi id?
             DolorumDoloremque similique accusamus, provident quia officia ad ducimus dicta quidem molestiae. Nobis ratione aliquam, ipsa vel voluptatibus, sint magni tempora assumenda, quia consequuntur sit deserunt mollitia nisi id?
             Dolorum
-        </h1>
+        </h1> {% endcomment %}
+        {% block content %}
+        {% endblock content %}
     </div>
 
     {% block footer %} {% endblock footer %}
@@ -65,7 +67,11 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- JS libs -->
+    <script src="{% static 'res/lib/js/clamp.min.js' %}"></script>
+
     <!-- JS -->
     <script src="{% static 'js/footer_pos.js' %}"></script>
+    <script src="{% static 'js/clamp_side_articles_title.js' %}"></script>
   </body>
 </html>

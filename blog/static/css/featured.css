@@ -1,0 +1,98 @@
+/* Normalize links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.-article-img {
+  border-radius: 10px;
+}
+
+#tag1 {
+  margin-right: 20px;
+}
+
+#tag2 {
+  margin-right: 20px;
+}
+
+.tags {
+  color: #4b83eb;
+  max-width: 70%;
+  overflow-wrap: break-word;
+}
+
+.-side-article {
+  margin-bottom: 30px;
+}
+
+.-side-article-img {
+  width: 50%;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .-side-article-img {
+    width: 100%;
+  }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .-side-article-img {
+    width: 100%;
+  }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .-side-article-img {
+    width: 50%;
+  }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .-side-article-img {
+    width: 50%;
+  }
+}
+
+/* .-side-article:nth-child(1) {
+  margin-top: 0;
+} */
+
+.-side-article-text {
+  padding-left: 20px;
+}
+
+/* Underscore-elements */
+
+.-ud {
+  position: relative;
+  transition: 300ms;
+}
+
+.-ud:hover {
+  cursor: pointer;
+}
+
+.-ud:after {
+  content: "";
+  width: 0px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  left: -2.5%;
+  background: #4b83eb;
+  transition: 300ms;
+}
+
+.-ud:hover:after {
+  width: 105%;
+}

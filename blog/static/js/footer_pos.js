@@ -1,5 +1,5 @@
 $(window).resize(function () {
-  if ($("body").height() > $(window).height()) {
+  if ($("body").height() + 200 > $(window).height()) {
     $("footer").removeClass("fixed-bottom");
     $(".content").removeClass("padding-for-footer");
   } else {
@@ -9,7 +9,7 @@ $(window).resize(function () {
 });
 
 $(document).ready(function () {
-  if ($("body").height() > $(window).height()) {
+  if ($("body").height() + 200 > $(window).height()) {
     $("footer").removeClass("fixed-bottom");
     $(".content").removeClass("padding-for-footer");
   } else {
