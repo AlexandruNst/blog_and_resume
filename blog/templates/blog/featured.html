@@ -1,11 +1,21 @@
 {% extends 'blog/base_nav_footer.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    {{block.super}}
+    <link rel="stylesheet" href="{% static 'css/featured.css' %}">
+{% endblock stylesheet %}
+
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-9">
-                <p class="font-bold font-bigger text-center">Featured</p>
+            <div class="col-12 col-lg-8">
+                {% comment %} <p class="font-bold font-bigger text-center">Featured</p> {% endcomment %}
+                <img class="-article-img img-fluid" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                <p class="font-title font-big-title">Fancy Title Potentially on Multiple Lines like This One</p>
+                <p class="font-semi-bold font-description">And then some other text that would be like a description thingy. Lorem ipsum dolor sit amet. Not only is this nice and cool, but it is also amazing! I am learning so much and so will you from this amazign article.</p>
             </div>
-            <div class="col-12 col-lg-3">
+            <div class="col-12 col-lg-4">
             hello</div>
         </div>
     </div>
