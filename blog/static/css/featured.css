@@ -13,11 +13,11 @@ a:hover {
   border-radius: 10px;
 }
 
-.tags > span:nth-child(1) {
+#tag1 {
   margin-right: 20px;
 }
 
-.tags > span:nth-child(2) {
+#tag2 {
   margin-right: 20px;
 }
 
