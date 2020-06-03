@@ -1,5 +1,5 @@
 .padding-for-footer {
-  padding-bottom: 300px;
+  padding-bottom: 250px;
 }
 
 /* Fonts */
@@ -60,9 +60,9 @@
 }
 
 .-bttn-transparent {
-  border: 2px solid white;
+  border: 1.5px solid white;
   color: white;
-  margin-top: 10px;
+  margin-top: 7px;
   transition: 300ms;
 }
 
@@ -70,4 +70,16 @@
   color: #4b83eb;
   background-color: white;
   text-decoration: none;
+}
+
+/* Social links */
+.-social {
+  width: 90%;
+  max-width: 50px;
+}
+
+.-social:hover {
+  transition: 300ms;
+  transform: scale(1.1);
+  cursor: pointer;
 }
