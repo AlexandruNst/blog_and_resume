@@ -25,7 +25,7 @@
 }
 
 .font-big-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .font-small-title {
@@ -73,13 +73,30 @@
 /* Buttons */
 .-bttn {
   padding: 6px 20px;
+  margin-top: 7px;
+  transition: 300ms;
+  text-decoration: none;
+}
+
+.-bttn-blue-filled {
+  background-color: #4b83eb;
+  color: white;
+  border: 1.5px solid white;
+}
+
+.-bttn-blue-filled:hover {
+  color: #4b83eb;
+  background-color: white;
+  border: 1.5px solid #4b83eb;
+  text-decoration: none;
+  transform: scale(1.01);
+  box-shadow: 0 2px 5px rgba(0, 153, 255, 0.1),
+    0 10px 10px rgba(0, 153, 255, 0.1);
 }
 
 .-bttn-transparent {
   border: 1.5px solid white;
   color: white;
-  margin-top: 7px;
-  transition: 300ms;
 }
 
 .-bttn-transparent:hover {
