@@ -16,6 +16,50 @@
   overflow-wrap: break-word;
 }
 
+.-side-article {
+  margin-bottom: 30px;
+}
+
+.-side-article-img {
+  width: 50%;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .-side-article-img {
+    width: 100%;
+  }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .-side-article-img {
+    width: 100%;
+  }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .-side-article-img {
+    width: 50%;
+  }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .-side-article-img {
+    width: 50%;
+  }
+}
+
+/* .-side-article:nth-child(1) {
+  margin-top: 0;
+} */
+
+.-side-article-text {
+  padding-left: 20px;
+}
+
 /* Underscore-elements */
 
 .-ud {
