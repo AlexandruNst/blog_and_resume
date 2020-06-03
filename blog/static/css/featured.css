@@ -1,3 +1,39 @@
 .-article-img {
   border-radius: 10px;
 }
+
+.tags > span:nth-child(2) {
+  margin: 0 20px;
+}
+
+.tags {
+  color: #4b83eb;
+  max-width: 70%;
+  overflow-wrap: break-word;
+}
+
+/* Underscore-elements */
+
+.-ud {
+  position: relative;
+  transition: 300ms;
+}
+
+.-ud:hover {
+  cursor: pointer;
+}
+
+.-ud:after {
+  content: "";
+  width: 0px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  left: -2.5%;
+  background: #4b83eb;
+  transition: 300ms;
+}
+
+.-ud:hover:after {
+  width: 105%;
+}
