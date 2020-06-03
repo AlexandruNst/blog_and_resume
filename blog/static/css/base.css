@@ -1,5 +1,5 @@
 .padding-for-footer {
-  padding-bottom: 300px;
+  padding-bottom: 250px;
 }
 
 /* Fonts */
@@ -29,7 +29,7 @@
 }
 
 #ud-link:hover {
-  color: #5672ff;
+  color: #4b83eb;
 }
 
 #ud-link:after {
@@ -39,7 +39,7 @@
   display: block;
   position: absolute;
   left: -2.5%;
-  background: #5672ff;
+  background: #4b83eb;
   transition: 300ms;
 }
 
@@ -48,8 +48,38 @@
 }
 
 /* Rounded items */
-#rounded {
-  border-radius: 13px;
+.-rounded {
+  border-radius: 9px;
   outline: none;
   box-shadow: none;
+}
+
+/* Buttons */
+.-bttn {
+  padding: 6px 20px;
+}
+
+.-bttn-transparent {
+  border: 1.5px solid white;
+  color: white;
+  margin-top: 7px;
+  transition: 300ms;
+}
+
+.-bttn-transparent:hover {
+  color: #4b83eb;
+  background-color: white;
+  text-decoration: none;
+}
+
+/* Social links */
+.-social {
+  width: 90%;
+  max-width: 50px;
+}
+
+.-social:hover {
+  transition: 300ms;
+  transform: scale(1.1);
+  cursor: pointer;
 }
