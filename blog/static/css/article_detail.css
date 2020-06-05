@@ -52,6 +52,10 @@
   .-article-text {
     width: 60%;
   }
+
+  #lg-social {
+    left: 20px;
+  }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -66,6 +70,10 @@
 
   .-article-text {
     width: 60%;
+  }
+
+  #lg-social {
+    left: 4vw;
   }
 }
 
@@ -87,4 +95,14 @@ hr.styled {
 
 .-description-text {
   margin-top: 1.5rem;
+}
+
+#lg-social {
+  position: fixed;
+  top: 135px;
+  max-width: 120px;
+}
+
+.-detail-social {
+  width: 40px;
 }

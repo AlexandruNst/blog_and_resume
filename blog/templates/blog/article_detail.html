@@ -16,11 +16,31 @@
             <span class="font-description font-normal-color d-inline">{{article.created_date|date:"jS F Y"}}</span>
         </div>
         <!-- Floating social buttons -->
+
+        <!-- below lg -->
+        <!-- END below lg -->
+
+        <!-- lg and above -->
+        <div id="lg-social" class="d-none d-lg-block">
+            <p class="font-normal-color font-semi-bold">Follow me</p>
+            <a href="#" class="-bttn -bttn-transparent-blue -rounded d-block">Follow</a>
+            <hr class="styled d-block">
+            <p class="font-normal-color font-semi-bold">Share this</p>
+            <div class="-socials-group">
+                <div class="mt-3"><img class="-social -detail-social" src="{% static "res/img/svg/facebook_detail.svg" %}" alt=""></div>
+                <div class="mt-3"><img class="-social -detail-social" src="{% static "res/img/svg/twitter_detail.svg" %}" alt=""></div>
+                <div class="mt-3"><img class="-social -detail-social" src="{% static "res/img/svg/linkedin_detail.svg" %}" alt=""></div>
+            </div>
+
+        </div>
+        <!-- END lg and above -->
+
+
         <!-- END Floating social buttons-->
 
         <img class="-article-img img-fluid mx-auto d-block -rounded mt-4" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
         <p class="-description-text font-normal-color font-semi-bold font-description d-block mx-auto">{{ article.description }}</p>
-        <div class="-article-text font-semi-bold font-normal-color d-block mx-auto">
+        <div class="-article-text font-normal-color d-block mx-auto">
             {{article.text|linebreaks}}
         </div>
 
