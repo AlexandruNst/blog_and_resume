@@ -100,3 +100,8 @@ a:hover {
 .-ud:hover:after {
   width: 105%;
 }
+
+.-article-anchor:hover .-article-title {
+  transition: 300ms;
+  color: #4b83eb;
+}

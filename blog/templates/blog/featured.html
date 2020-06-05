@@ -11,10 +11,10 @@
         <div class="row">
             <div class="col-12 col-lg-7">
                 <div class="-article -featured-article pr-0 pr-lg-4">
-                    <a href="#" id="-link-featured-article">
+                    <a class="-article-anchor" href="#" id="-link-featured-article">
                         <p class="font-bold font-bigger text-center d-lg-none mb-4">Featured</p>
                         <img class="-article-img img-fluid" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
-                        <p class="pt-3 font-title font-big-title">{{ featured_article.title }}</p>
+                        <p class="-article-title pt-3 font-title font-big-title">{{ featured_article.title }}</p>
                         <p class="font-semi-bold font-description">{{ featured_article.description }}</p>
                         <div class="tags float-lg-right pt-lg-2">
                             <span class="-ud" id="spacing"><a href="#"></a></span>
@@ -40,10 +40,10 @@
                         {{ article.tags }}
                     </div> {% endcomment %}
                         <div class="-article -side-article d-inline-block col-12 col-sm-6 col-lg-12">
-                            <a href="#">
+                            <a class="-article-anchor" href="#aa">
                                 <img class="-article-img -side-article-img img-fluid float-left" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
                                 <div class="d-inline-block -side-article-text pl-3">
-                                    <p class="font-title font-small-title -side-article-title pr-0 pr-sm-2 pr-lg-0">{{ article.title }} 1111111 <br></p>
+                                    <p class="font-title font-small-title -article-title -side-article-title pr-0 pr-sm-2 pr-lg-0">{{ article.title }} 1111111 <br></p>
                                     <a href="#"><p class="d-inline-block -ud font-semi-bold">Read more</p></a>
                                 </div>
                             </a>
