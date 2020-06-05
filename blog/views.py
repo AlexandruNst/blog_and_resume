@@ -5,4 +5,11 @@ from .models import Article
 
 def post_list(request):
     articles = Article.objects.order_by('-created_date')
-    return render(request, 'blog/featured.html', {'articles': articles})
+    featured_article = articles[0]
+    side_articles = articles[1:5]
+    return render(
+        request, 'blog/featured.html', {
+            'articles': articles,
+            'featured_article': featured_article,
+            'side_articles': side_articles
+        })

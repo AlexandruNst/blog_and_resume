@@ -20,3 +20,7 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_list_of_tags(self):
+        split_tags = self.tags.split()
+        return ["#" + tag for tag in split_tags]
