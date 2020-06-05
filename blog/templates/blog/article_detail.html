@@ -51,6 +51,17 @@
             {{article.text|linebreaks}}
         </div>
 
+        <div class="d-block mx-auto -tags-group mt-5">
+            <p class="font-normal-color font-semi-bold">Tags</p>
+            {% for tag in article.get_list_of_tags %}
+            <p class="mr-4 -ud font-normal-color d-inline-block"><a class="" href="#">{{tag}}</a></p>
+            {% endfor %}
+        </div>
+
+        <hr class="styled d-block">
+        <p class="font-title font-big-title font-normal-color">Recommended reads<p>
+
+
     </div>
 
 {% endblock content %}
