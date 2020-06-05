@@ -13,3 +13,10 @@ def post_list(request):
             'featured_article': featured_article,
             'side_articles': side_articles
         })
+
+
+def all_articles_list(request):
+    articles = Article.objects.order_by('-created_date')
+    return render(request, 'blog/all_articles.html', {
+        'articles': articles,
+    })

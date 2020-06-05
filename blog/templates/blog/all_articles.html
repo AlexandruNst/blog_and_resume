@@ -1,0 +1,13 @@
+{% extends 'blog/base_nav_footer.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div>HELLO THIS IS ALL ARTICLES PAGE</div>
+    {% for article in articles %}
+        <div>
+            {{article.title}}
+        </div>
+    {% endfor %}
+
+{% endblock content %}
