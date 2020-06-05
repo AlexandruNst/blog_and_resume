@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-12 col-lg-7">
                 <div class="-article -featured-article pr-0 pr-lg-4">
-                    <a class="-article-anchor" href="#" id="-link-featured-article">
+                    <a class="-article-anchor" href="{% url 'article_detail' pk=featured_article.pk %}" id="-link-featured-article">
                         <p class="font-bold font-bigger text-center d-lg-none mb-4">Featured</p>
                         <img class="-article-img img-fluid" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
                         <p class="-article-title pt-3 font-title font-big-title">{{ featured_article.title }}</p>
@@ -22,7 +22,7 @@
                             <span class="-ud" id="tag2"><a href="#">{{ featured_article.get_list_of_tags.1 }}</a></span>
                             <span class="-ud" id="tag3"><a href="#">{{ featured_article.get_list_of_tags.2 }}</a></span>
                         </div>
-                        <a href="#" class="d-inline-block -bttn -rounded -bttn-blue-filled font-semi-bold mt-3 mt-lg-0">Read more</a>
+                        <a href="{% url 'article_detail' pk=featured_article.pk %}" class="d-inline-block -bttn -rounded -bttn-blue-filled font-semi-bold mt-3 mt-lg-0">Read more</a>
                     </a>
                 </div>
             </div>
@@ -40,11 +40,11 @@
                         {{ article.tags }}
                     </div> {% endcomment %}
                         <div class="-article -side-article d-inline-block col-12 col-sm-6 col-lg-12">
-                            <a class="-article-anchor" href="#aa">
+                            <a class="-article-anchor" href="{% url 'article_detail' pk=article.pk %}">
                                 <img class="-article-img -side-article-img img-fluid float-left" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
                                 <div class="d-inline-block -side-article-text pl-3">
                                     <p class="font-title font-small-title -article-title -side-article-title pr-0 pr-sm-2 pr-lg-0">{{ article.title }} <br></p>
-                                    <a href="#"><p class="d-inline-block -ud font-semi-bold">Read more</p></a>
+                                    <a href="{% url 'article_detail' pk=article.pk %}"><p class="d-inline-block -ud font-semi-bold">Read more</p></a>
                                 </div>
                             </a>
                         </div>
