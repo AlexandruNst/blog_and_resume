@@ -2,7 +2,8 @@
   width: 100%;
 }
 
-.-article-img {
+.-article-img,
+.-recommended-group {
   width: 100%;
 }
 
@@ -18,7 +19,8 @@
   }
 
   .-article-img,
-  .-description-text {
+  .-description-text,
+  .-recommended-group {
     width: 100%;
   }
 
@@ -34,7 +36,8 @@
     width: 80%;
   }
   .-article-img,
-  .-description-text {
+  .-description-text,
+  .-recommended-group {
     width: 90%;
   }
   .-article-text,
@@ -49,7 +52,8 @@
     width: 60%;
   }
   .-article-img,
-  .-description-text {
+  .-description-text,
+  .-recommended-group {
     width: 75%;
   }
   .-article-text,
@@ -68,7 +72,8 @@
     width: 60%;
   }
   .-article-img,
-  .-description-text {
+  .-description-text,
+  .-recommended-group {
     width: 75%;
   }
 

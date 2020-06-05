@@ -59,9 +59,13 @@
         </div>
 
         <hr class="styled d-block">
-        <p class="font-title font-big-title font-normal-color">Recommended reads<p>
-
-
+        <div class="-recommended-group d-block mx-auto">
+            <p class="font-title font-big-title font-normal-color">Recommended reads<p>
+            <div class="row">
+                <div class="col-12 col-lg-6">{{recommended_articles.0.title}}</div>
+                <div class="col-12 col-lg-6">{{recommended_articles.1.title}}</div>
+            </div>
+        </div>
     </div>
 
 {% endblock content %}

@@ -24,4 +24,9 @@ def all_articles_list(request):
 
 def article_detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
-    return render(request, 'blog/article_detail.html', {'article': article})
+    articles = Article.objects.order_by('-created_date')
+    recommended_articles = [a for a in articles if a != article][:2]
+    return render(request, 'blog/article_detail.html', {
+        'article': article,
+        'recommended_articles': recommended_articles
+    })
