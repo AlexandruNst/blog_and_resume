@@ -31,6 +31,10 @@ a:hover {
   margin-bottom: 30px;
 }
 
+.-side-article-text {
+  width: 50%;
+}
+
 .-side-article-img {
   width: 50%;
 }
@@ -95,4 +99,9 @@ a:hover {
 
 .-ud:hover:after {
   width: 105%;
+}
+
+.-article-anchor:hover .-article-title {
+  transition: 300ms;
+  color: #4b83eb;
 }
