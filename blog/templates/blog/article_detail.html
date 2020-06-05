@@ -9,7 +9,21 @@
 {% block content %}
 
     <div class="container">
-        <p class="font-title font-big-title text-center mx-auto">{{article.title}}</p>
+        <p class="font-title font-big-title font-normal-color text-center mx-auto">{{article.title}}<p>
+        <hr class="styled d-block">
+        <div class="text-center">
+            <span class="font-bold font-normal-color d-inline">Alexandru Nastase &nbsp;</span>
+            <span class="font-description font-normal-color d-inline">{{article.created_date|date:"jS F Y"}}</span>
+        </div>
+        <!-- Floating social buttons -->
+        <!-- END Floating social buttons-->
+
+        <img class="-article-img img-fluid mx-auto d-block -rounded mt-4" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+        <p class="-description-text font-normal-color font-semi-bold font-description d-block mx-auto">{{ article.description }}</p>
+        <div class="-article-text font-semi-bold font-normal-color d-block mx-auto">
+            {{article.text|linebreaks}}
+        </div>
+
     </div>
 
 {% endblock content %}
