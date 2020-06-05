@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Article
 
@@ -20,3 +20,8 @@ def all_articles_list(request):
     return render(request, 'blog/all_articles.html', {
         'articles': articles,
     })
+
+
+def article_detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    return render(request, 'blog/article_detail.html', {'article': article})
