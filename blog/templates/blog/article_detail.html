@@ -1,9 +1,15 @@
 {% extends 'blog/base_nav_footer.html' %}
 {% load static %}
 
+{% block stylesheet %}
+    {{block.super}}
+    <link rel="stylesheet" href="{% static 'css/article_detail.css' %}">
+{% endblock stylesheet %}
+
 {% block content %}
 
-    <div>ARTICLE DETAILS</div>
-    {{article.title}}
+    <div class="container">
+        <p class="font-title font-big-title text-center mx-auto">{{article.title}}</p>
+    </div>
 
 {% endblock content %}
