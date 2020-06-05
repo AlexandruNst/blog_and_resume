@@ -67,8 +67,8 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- JS libs -->
-    <script src="{% static 'res/lib/js/clamp.min.js' %}"></script>
+    {% block js %}
+    {% endblock js %}
 
     <!-- JS -->
     <script src="{% static 'js/footer_pos.js' %}"></script>

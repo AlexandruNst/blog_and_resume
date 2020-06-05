@@ -31,6 +31,10 @@ a:hover {
   margin-bottom: 30px;
 }
 
+.-side-article-text {
+  width: 50%;
+}
+
 .-side-article-img {
   width: 50%;
 }
