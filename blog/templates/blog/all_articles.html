@@ -15,7 +15,7 @@
         
             {% for article in articles %}
                 <div class="-article -side-article d-inline-block col-12">
-                    <a class="-side-article-anchor" href="#">
+                    <a class="-side-article-anchor" href="{% url 'article_detail' pk=article.pk %}">
                         <img class="-article-img -side-article-img img-fluid float-left" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
                         <div class="d-inline-block -side-article-text pl-3">
                             <p class="font-title font-big-title -side-article-title pr-0 pr-sm-2 pr-lg-0">{{ article.title }}<br></p>
