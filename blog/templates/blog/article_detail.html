@@ -60,10 +60,19 @@
 
         <hr class="styled d-block">
         <div class="-recommended-group d-block mx-auto">
-            <p class="font-title font-big-title font-normal-color">Recommended reads<p>
+            <p class="font-title font-big-title font-normal-color mt-5 mt-lg-2">Recommended reads<p>
             <div class="row">
-                <div class="col-12 col-lg-6">{{recommended_articles.0.title}}</div>
-                <div class="col-12 col-lg-6">{{recommended_articles.1.title}}</div>
+                <div class="col-12 col-lg-6">
+                    <a href="{% url 'article_detail' pk=recommended_articles.0.pk %}" class="-recommended-anchor mb-5 mb-lg-0 d-block">
+                        <img class="img-fluid mx-auto d-block -rounded" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                        <p class="-recommended-title font-title font-small-title font-normal-color mt-3">{{recommended_articles.0.title}}<p>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-6">
+                <a href="{% url 'article_detail' pk=recommended_articles.1.pk %}" class="-recommended-anchor">
+                    <img class="img-fluid mx-auto d-block -rounded" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                    <p class="-recommended-title font-title font-small-title font-normal-color mt-3">{{recommended_articles.1.title}}<p>
+                </a></div>
             </div>
         </div>
     </div>

@@ -152,3 +152,11 @@ a:hover {
 .-ud:hover:after {
   width: 105%;
 }
+
+.-recommended-title {
+  transition: 300ms;
+}
+
+.-recommended-anchor:hover .-recommended-title {
+  color: #4b83eb;
+}
