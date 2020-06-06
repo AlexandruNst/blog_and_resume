@@ -30,3 +30,7 @@ def article_detail(request, pk):
         'article': article,
         'recommended_articles': recommended_articles
     })
+
+
+def about(request):
+    return render(request, 'blog/about.html')
