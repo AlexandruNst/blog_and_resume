@@ -5,7 +5,10 @@
 /* Font styles */
 * {
   font-family: "Open Sans", sans-serif;
-  font-weight: 400;
+}
+
+.font-normal-color {
+  color: #343434;
 }
 
 .font-semi-bold {
@@ -33,7 +36,7 @@
 }
 
 .font-description {
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 /* Links */
@@ -76,6 +79,22 @@
   margin-top: 7px;
   transition: 300ms;
   text-decoration: none;
+}
+
+.-bttn-transparent-blue {
+  border: 1.5px solid #4b83eb;
+  background-color: white;
+  color: #4b83eb;
+}
+
+.-bttn-transparent-blue:hover {
+  color: white;
+  background-color: #4b83eb;
+  border: 1.5px solid #4b83eb;
+  text-decoration: none;
+  transform: scale(1.07);
+  box-shadow: 0 2px 5px rgba(0, 153, 255, 0.1),
+    0 10px 10px rgba(0, 153, 255, 0.1);
 }
 
 .-bttn-blue-filled {

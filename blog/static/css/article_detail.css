@@ -1,0 +1,162 @@
+.font-big-title {
+  width: 100%;
+}
+
+.-article-img,
+.-recommended-group {
+  width: 100%;
+}
+
+.-article-text,
+.-tags-group {
+  width: 90%;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .font-big-title {
+    width: 100%;
+  }
+
+  .-article-img,
+  .-description-text,
+  .-recommended-group {
+    width: 100%;
+  }
+
+  .-article-text,
+  .-tags-group {
+    width: 90%;
+  }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .font-big-title {
+    width: 80%;
+  }
+  .-article-img,
+  .-description-text,
+  .-recommended-group {
+    width: 90%;
+  }
+  .-article-text,
+  .-tags-group {
+    width: 75%;
+  }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .font-big-title {
+    width: 60%;
+  }
+  .-article-img,
+  .-description-text,
+  .-recommended-group {
+    width: 75%;
+  }
+  .-article-text,
+  .-tags-group {
+    width: 60%;
+  }
+
+  #lg-social {
+    left: 20px;
+  }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .font-big-title {
+    width: 60%;
+  }
+  .-article-img,
+  .-description-text,
+  .-recommended-group {
+    width: 75%;
+  }
+
+  .-article-text,
+  .-tags-group {
+    width: 60%;
+  }
+
+  #lg-social {
+    left: 4vw;
+  }
+}
+
+hr.styled {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.-article-text {
+  margin-top: 3rem;
+}
+
+.-description-text {
+  margin-top: 1.5rem;
+}
+
+#lg-social {
+  position: fixed;
+  top: 135px;
+  max-width: 120px;
+}
+
+.-detail-social {
+  width: 40px;
+}
+
+/* Underscore-elements */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #4b83eb;
+}
+
+.-ud {
+  position: relative;
+  transition: 300ms;
+  color: #4b83eb;
+}
+
+.-ud:hover {
+  cursor: pointer;
+  color: #4b83eb;
+}
+
+.-ud:after {
+  content: "";
+  width: 0px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  left: -2.5%;
+  background: #4b83eb;
+  transition: 300ms;
+}
+
+.-ud:hover:after {
+  width: 105%;
+}
+
+.-recommended-title {
+  transition: 300ms;
+}
+
+.-recommended-anchor:hover .-recommended-title {
+  color: #4b83eb;
+}

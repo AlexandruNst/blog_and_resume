@@ -1,9 +1,101 @@
 {% extends 'blog/base_nav_footer.html' %}
 {% load static %}
 
+{% block stylesheet %}
+    {{block.super}}
+    <link rel="stylesheet" href="{% static 'css/article_detail.css' %}">
+{% endblock stylesheet %}
+
 {% block content %}
 
-    <div>ARTICLE DETAILS</div>
-    {{article.title}}
+    <div class="container">
+        <p class="font-title font-big-title font-normal-color text-center mx-auto">{{article.title}}<p>
+        <hr class="styled d-block">
+        <div class="text-center">
+            <span class="font-bold font-normal-color d-inline">Alexandru Nastase &nbsp;</span>
+            <span class="font-description font-normal-color d-inline">{{article.created_date|date:"j F Y"}}</span>
+        </div>
+        <!-- Floating social buttons -->
+
+        <!-- below lg -->
+        <div class="d-flex d-lg-none w-100 mt-3" id="sm-social">
+            <div class="d-block mx-auto">
+                <div class="float-left mx-2"><img class="-social -detail-social" src="{% static "res/img/svg/facebook_detail.svg" %}" alt=""></div>
+                <div class="float-left mx-2"><img class="-social -detail-social" src="{% static "res/img/svg/twitter_detail.svg" %}" alt=""></div>
+                <div class="float-left mx-2"><img class="-social -detail-social" src="{% static "res/img/svg/linkedin_detail.svg" %}" alt=""></div>
+            </div>
+        </div>
+        <!-- END below lg -->
+
+        <!-- lg and above -->
+        <div id="lg-social" class="d-none d-lg-block">
+            <p class="font-normal-color font-semi-bold">Follow me</p>
+            <a href="#" class="-bttn -bttn-transparent-blue -rounded d-block">Follow</a>
+            <hr class="styled d-block">
+            <p class="font-normal-color font-semi-bold">Share this</p>
+            <div class="-socials-group">
+                <div class="mt-3"><img class="-social -detail-social" src="{% static "res/img/svg/facebook_detail.svg" %}" alt=""></div>
+                <div class="mt-3"><img class="-social -detail-social" src="{% static "res/img/svg/twitter_detail.svg" %}" alt=""></div>
+                <div class="mt-3"><img class="-social -detail-social" src="{% static "res/img/svg/linkedin_detail.svg" %}" alt=""></div>
+            </div>
+
+        </div>
+        <!-- END lg and above -->
+
+
+        <!-- END Floating social buttons-->
+
+        <img class="-article-img img-fluid mx-auto d-block -rounded mt-4" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+        <p class="-description-text font-normal-color font-semi-bold font-description d-block mx-auto">{{ article.description }}</p>
+        <div class="-article-text font-normal-color d-block mx-auto">
+            {{article.text|linebreaks}}
+        </div>
+
+        <div class="d-block mx-auto -tags-group mt-5">
+            <p class="font-normal-color font-semi-bold">Tags</p>
+            {% for tag in article.get_list_of_tags %}
+            <p class="mr-4 -ud font-normal-color d-inline-block"><a class="" href="#">{{tag}}</a></p>
+            {% endfor %}
+        </div>
+
+        <hr class="styled d-block">
+        <div class="-recommended-group d-block mx-auto">
+            <p class="font-title font-big-title font-normal-color mt-5 mt-lg-2">Recommended reads<p>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <a href="{% url 'article_detail' pk=recommended_articles.0.pk %}" class="-recommended-anchor mb-5 mb-lg-0 d-block">
+                        <img class="img-fluid mx-auto d-block -rounded" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                        <p class="-recommended-title font-title font-small-title font-normal-color mt-3">{{recommended_articles.0.title}}<p>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-6">
+                <a href="{% url 'article_detail' pk=recommended_articles.1.pk %}" class="-recommended-anchor">
+                    <img class="img-fluid mx-auto d-block -rounded" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                    <p class="-recommended-title font-title font-small-title font-normal-color mt-3">{{recommended_articles.1.title}}<p>
+                </a></div>
+            </div>
+        </div>
+
+        <p class="text-center">
+        	<a id="home-button" href="/" class="-bttn -bttn-blue-filled -rounded mt-5 d-inline-block mx-auto">Back to homepage</a>
+        </p>
+    </div>
 
 {% endblock content %}
+
+{% block js %}
+    <script>
+        $("#home-button").each(function(){
+
+            $(this).hover(
+                function() {
+                $(this).html('<i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to homepage');
+                },
+                function() {
+                $(this).html("Back to homepage");
+                }
+
+        );
+        });
+    </script>
+{% endblock js %}
