@@ -1,0 +1,13 @@
+{% extends 'blog/base_nav_footer.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    {{block.super}}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/article_detail.css' %}"> {% endcomment %}
+{% endblock stylesheet %}
+
+{% block content %}
+    <div>
+        HELLO ABOUT
+    </div>
+{% endblock content %}
