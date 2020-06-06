@@ -75,6 +75,27 @@
                 </a></div>
             </div>
         </div>
+
+        <p class="text-center">
+        	<a id="home-button" href="/" class="-bttn -bttn-blue-filled -rounded mt-5 d-inline-block mx-auto">Back to homepage</a>
+        </p>
     </div>
 
 {% endblock content %}
+
+{% block js %}
+    <script>
+        $("#home-button").each(function(){
+
+            $(this).hover(
+                function() {
+                $(this).html('<i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to homepage');
+                },
+                function() {
+                $(this).html("Back to homepage");
+                }
+
+        );
+        });
+    </script>
+{% endblock js %}
