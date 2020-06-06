@@ -100,7 +100,7 @@
 .-bttn-blue-filled {
   background-color: #4b83eb;
   color: white;
-  border: 1.5px solid white;
+  border: 1.5px solid #4b83eb;
 }
 
 .-bttn-blue-filled:hover {

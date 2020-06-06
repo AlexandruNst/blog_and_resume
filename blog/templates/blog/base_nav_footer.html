@@ -47,3 +47,33 @@
     <!-- END Footer -->
 {% endblock footer %}
 
+{% block js %}
+    <script>
+        $(".-home-button").each(function(){
+
+            $(this).hover(
+                function() {
+                    $(this).html('<i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to homepage');
+                },
+                function() {
+                    $(this).html("Back to homepage");
+                }
+
+            );
+        });
+
+        $(".-source-code-button").each(function(){
+
+            $(this).hover(
+                function() {
+                    $(this).html('<i class="fas fa-code"></i>&nbsp;&nbsp;Source code');
+                },
+                function() {
+                    $(this).html("Source code");
+                }
+
+            );
+        });
+    </script>
+{% endblock js %}
+
