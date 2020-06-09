@@ -8,7 +8,7 @@
 
 
 {% block navbar %}
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+<nav class="navbar navbar-expand-xl navbar-light bg-transparent">
   <a class="navbar-brand" href="/">
     <img src="{% static 'res/img/svg/logo.svg' %}" alt="">
   </a>
@@ -22,7 +22,7 @@
         <a class="nav-link" href="/articles"><span class="font-semi-bold" id="ud-link">Articles</span> <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><span class="font-semi-bold" id="ud-link">Resume</span></a>
+        <a class="nav-link" href="/resume"><span class="font-semi-bold" id="ud-link">Resume</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/about"><span class="font-semi-bold" id="ud-link">About</span></a>
@@ -37,6 +37,13 @@
         </div>
       </div>
     </form>
+    <div class="text-center mt-3 mt-xl-0">
+    {% if user.is_authenticated %}
+      <a href="/accounts/logout" class="-bttn -bttn-transparent-blue -rounded">Logout</a>
+    {% else %}
+      <a href="/accounts/login" class="-bttn -bttn-blue-filled -rounded">Login</a>
+    {% endif %}
+    </div>
   </div>
 </nav>
 {% endblock navbar  %}

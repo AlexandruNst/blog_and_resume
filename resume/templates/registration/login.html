@@ -1,0 +1,33 @@
+{% extends 'blog/base_nav_footer.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    {{block.super}}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/article_detail.css' %}"> {% endcomment %}
+{% endblock stylesheet %}
+
+{% block content %}
+    <div class="container text-center font-normal-color">
+        <p class="font-title font-big-title">Log in</p>
+        {% if form.errors %}
+            <p class="font-description">Your username and password didn't match. Please try again.</p>
+        {% endif %}
+    
+        <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+            <table class="mx-auto">
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td class="-bttn-blue-filled">{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td class="-rounded">{{ form.password }}</td>
+                </tr>
+            </table>
+    
+            <input type="submit" value="Log in" class="-bttn -bttn-blue-filled -rounded mt-5" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+{% endblock content %}
