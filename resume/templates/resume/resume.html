@@ -3,9 +3,39 @@
 
 {% block stylesheet %}
     {{block.super}}
-    {% comment %} <link rel="stylesheet" href="{% static 'css/article_detail.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/resume.css' %}">
 {% endblock stylesheet %}
 
 {% block content %}
-    <h1>HI RESUME</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-12 col-sm-11 col-md-8 col-lg-6 col-xl-6">
+                <p class="font-title font-big-title font-normal-color text-center">Alexandru Nastase</p>
+                <!-- Skills section -->
+                <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/skills.svg' %}" alt="">
+                <p>Some text</p>
+                <!-- END Skills section -->
+                <!-- Experience section -->
+                <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/experience.svg' %}" alt="">
+                <p>Some text</p>
+                <!-- END Experience section -->
+                <!-- Education section -->
+                <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/education.svg' %}" alt="">
+                <p>Some text</p>
+                <!-- END Education section -->
+                <!-- Technical interests section -->
+                <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/technical_interests.svg' %}" alt="">
+                <p>Some text</p>
+                <!-- END Technical interests section -->
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="#" class="-bttn -bttn-blue-filled -rounded mt-5" id="edit-resume-button">Edit resume</a>
+        </div>
+        <div class="d-flex justify-content-center mt-2">
+            <p class="font-description">Must be logged in to edit</p>
+        </div>
+    </div>
 {% endblock content %}
