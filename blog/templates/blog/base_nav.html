@@ -38,7 +38,11 @@
       </div>
     </form>
     <div class="text-center mt-3 mt-xl-0">
-      <a href="#" class="-bttn -bttn-blue-filled -rounded">Login</a>
+    {% if user.is_authenticated %}
+      <a href="/accounts/logout" class="-bttn -bttn-transparent-blue -rounded">Logout</a>
+    {% else %}
+      <a href="/accounts/login" class="-bttn -bttn-blue-filled -rounded">Login</a>
+    {% endif %}
     </div>
   </div>
 </nav>

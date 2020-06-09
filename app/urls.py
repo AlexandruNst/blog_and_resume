@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
 from django.contrib.auth import views
 
 urlpatterns = [
@@ -22,4 +23,8 @@ urlpatterns = [
     path("", include('blog.urls')),
     path("resume/", include('resume.urls')),
     path('accounts/login/', views.LoginView.as_view(), name='login'),
+    path('accounts/logout/',
+         views.LogoutView.as_view(),
+         {'next_page': settings.LOGOUT_REDIRECT_URL},
+         name='logout'),
 ]
