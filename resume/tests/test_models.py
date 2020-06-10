@@ -26,3 +26,8 @@ class ResumeItemModelTest(UnitTest):
                                                   title="Amazing Skill 3")
         self.assertEqual(list(ResumeItem.objects.all()),
                          [resume_item_1, resume_item_2, resume_item_3])
+
+    def test_string_representation(self):
+        resume_item_1 = ResumeItem.objects.create(section="SK",
+                                                  title="New Skill 1")
+        self.assertEqual(str(resume_item_1), 'New Skill 1')
