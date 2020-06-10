@@ -89,3 +89,13 @@ class ResumeNewItemTest(UnitTest):
         self.assertEqual(new_item.title, 'New Skill')
         self.assertEqual(new_item.timeframe, 'some time')
         self.assertEqual(new_item.text, 'Skill Text')
+
+    def test_resume_new_redirects_to_resume_view(self):
+        response = self.client.post(f'/resume/new',
+                                    data={
+                                        'section': 'SK',
+                                        'title': 'New Skill',
+                                        'timeframe': 'some time',
+                                        'text': "Skill Text",
+                                    })
+        self.assertRedirects(response, '/resume/')
