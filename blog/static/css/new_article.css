@@ -1,4 +1,6 @@
-#id_text {
+#id_text,
+#id_description,
+#id_tags {
   width: 60%;
   margin: 0 auto;
   display: block;
