@@ -217,7 +217,7 @@ class ResumeItemEditTest(UnitTest):
         self.assertIsInstance(response.context['form'], ResumeItemForm)
 
 
-class ResumeItemDeleteTest(UnitTest):
+class ResumeItemDeleteViewTest(UnitTest):
     def test_resume_delete_redirects_to_resume_view(self):
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
@@ -241,3 +241,12 @@ class ResumeItemDeleteTest(UnitTest):
         self.assertEqual(ResumeItem.objects.count(), 1)
         self.assertNotEqual(ResumeItem.objects.first().title, "New Skill 1")
         self.assertEqual(ResumeItem.objects.first().title, "Best Skill 2")
+
+    def test_resume_delete_removes_item_from_resume_view(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        resume = self.client.get('/resume/')
+        self.assertContains(resume, "New Skill")
+        response = self.client.post(f'/resume/{resume_item.id}/delete/')
+        resume = self.client.get('/resume/')
+        self.assertNotContains(resume, "New Skill")
