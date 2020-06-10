@@ -3,6 +3,8 @@ from resume.models import ResumeItem
 from blog.models import Article
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.utils import timezone
+from datetime import timedelta
 
 
 class ResumeItemModelTest(UnitTest):
@@ -73,3 +75,15 @@ class ArticleModelTest(UnitTest):
         article3 = Article.objects.create(author=user)
         self.assertEqual(list(Article.objects.all()),
                          [article1, article2, article3])
+
+    def test_default_time(self):
+        user = User.objects.create_user('test_user', 'test@user.com',
+                                        'mostsecurepasswordever')
+        article = Article.objects.create(author=user,
+                                         title='title',
+                                         text='text',
+                                         description='description',
+                                         tags='tags')
+        self.assertAlmostEqual(article.created_date,
+                               timezone.now(),
+                               delta=timedelta(seconds=2))
