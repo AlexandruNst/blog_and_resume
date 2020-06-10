@@ -155,6 +155,12 @@ class ResumeItemEditTest(UnitTest):
         response = self.client.get(f'/resume/{resume_item.id}/edit/')
         self.assertIsInstance(response.context['form'], ResumeItemForm)
 
+    def test_resume_edit_displays_item(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.get(f'/resume/{resume_item.id}/edit/')
+        self.assertContains(response, "New Skill")
+
     def test_resume_edit_displays_correct_item(self):
         resume_item_1 = ResumeItem.objects.create(section="SK",
                                                   title="New Skill 1")
