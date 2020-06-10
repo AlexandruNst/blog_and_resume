@@ -62,3 +62,15 @@ class ResumeNewItemTest(UnitTest):
         ResumeItem.objects.create(section="TI", title="New Technical-Interest")
         response = self.client.get('/resume/')
         self.assertContains(response, 'New Technical-Interest')
+
+    def test_can_display_multiple_resume_items(self):
+        self.set_up()
+        ResumeItem.objects.create(section="SK", title="New Skill")
+        ResumeItem.objects.create(section="EX", title="New Experience")
+        ResumeItem.objects.create(section="ED", title="New Education")
+        ResumeItem.objects.create(section="TI", title="New Technical-Interest")
+        response = self.client.get('/resume/')
+        self.assertContains(response, 'New Skill')
+        self.assertContains(response, 'New Experience')
+        self.assertContains(response, 'New Education')
+        self.assertContains(response, 'New Technical-Interest')
