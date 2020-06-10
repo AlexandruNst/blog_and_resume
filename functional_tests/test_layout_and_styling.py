@@ -27,3 +27,16 @@ class LayoutAndStylingTest(FunctionalTest):
                                article_container.size['width'] / 2,
                                512,
                                delta=10)
+
+    def test_layout_and_styling_about(self):
+        #Ellie goes to the article page
+        self.browser.get('http://127.0.0.1:8000/about')
+        self.browser.set_window_size(1024, 768)
+
+        #She notices the content nicely centered
+        article_container = self.browser.find_element_by_css_selector(
+            '.-about-container')
+        self.assertAlmostEqual(article_container.location['x'] +
+                               article_container.size['width'] / 2,
+                               512,
+                               delta=10)
