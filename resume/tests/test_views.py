@@ -24,3 +24,10 @@ class TemplateTest(UnitTest):
         self.set_up()
         response = self.client.get('/resume/')
         self.assertTemplateUsed(response, 'resume/resume.html')
+
+
+class ResumeNewItemTest(UnitTest):
+    def test_resume_new_correct_template_returned(self):
+        self.set_up()
+        response = self.client.get('/resume/new')
+        self.assertTemplateUsed(response, 'resume/new_resume_item.html')
