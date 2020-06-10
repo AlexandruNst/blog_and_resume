@@ -194,7 +194,9 @@ class ResumeItemEditTest(UnitTest):
                                     })
         self.assertRedirects(response, '/resume/')
 
-    def post_invalid_input(self, resume_item):
+    def post_invalid_input(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
         return self.client.post(f'/resume/{resume_item.id}/edit/',
                                 data={
                                     'section': '',
@@ -202,7 +204,10 @@ class ResumeItemEditTest(UnitTest):
                                 })
 
     def test_resume_edit_invalid_input_not_saved(self):
-        resume_item = ResumeItem.objects.create(section="SK",
-                                                title="New Skill")
-        self.post_invalid_input(resume_item)
+        self.post_invalid_input()
         self.assertEqual(ResumeItem.objects.first().title, "New Skill")
+
+    def test_resume_edit_invalid_input_renders_new_item_template(self):
+        response = self.post_invalid_input()
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'resume/new_resume_item.html')
