@@ -119,3 +119,24 @@ class ResumeNewItemTest(UnitTest):
     def test_resume_new_invalid_input_passes_form_to_template(self):
         response = self.post_invalid_input()
         self.assertIsInstance(response.context['form'], ResumeItemForm)
+
+    def test_resume_new_passes_correct_items_to_template(self):
+        ResumeItem.objects.create(section="SK", title="New Skill")
+        ResumeItem.objects.create(section="EX", title="New Experience")
+        ResumeItem.objects.create(section="ED", title="New Education")
+        ResumeItem.objects.create(section="TI", title="New Technical-Interest")
+
+        skills = ResumeItem.objects.filter(section="SK")
+        experience = ResumeItem.objects.filter(section="EX")
+        education = ResumeItem.objects.filter(section="ED")
+        technical_interests = ResumeItem.objects.filter(section="TI")
+
+        response = self.client.get('/resume/')
+
+        self.assertEqual(list(response.context['skills_list']), list(skills))
+        self.assertEqual(list(response.context['experience_list']),
+                         list(experience))
+        self.assertEqual(list(response.context['education_list']),
+                         list(education))
+        self.assertEqual(list(response.context['technical_interests_list']),
+                         list(technical_interests))
