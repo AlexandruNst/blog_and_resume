@@ -82,14 +82,17 @@ class ResumeViewTest(UnitTest):
 
 class ResumeItemNewViewTest(UnitTest):
     def test_resume_new_correct_template_returned(self):
+        self.set_up_user()
         response = self.client.get('/resume/new')
         self.assertTemplateUsed(response, 'resume/new_resume_item.html')
 
     def test_resume_new_uses_form(self):
+        self.set_up_user()
         response = self.client.get('/resume/new')
         self.assertIsInstance(response.context['form'], ResumeItemForm)
 
     def test_can_save_a_POST_request_to_resume(self):
+        self.set_up_user()
         self.client.post(f'/resume/new',
                          data={
                              'section': 'SK',
@@ -105,6 +108,7 @@ class ResumeItemNewViewTest(UnitTest):
         self.assertEqual(new_item.text, 'Skill Text')
 
     def test_resume_new_redirects_to_resume_view(self):
+        self.set_up_user()
         response = self.client.post(f'/resume/new',
                                     data={
                                         'section': 'SK',
@@ -115,6 +119,7 @@ class ResumeItemNewViewTest(UnitTest):
         self.assertRedirects(response, '/resume/')
 
     def post_invalid_input(self):
+        self.set_up_user()
         return self.client.post(f'/resume/new',
                                 data={
                                     'section': '',
@@ -137,24 +142,28 @@ class ResumeItemNewViewTest(UnitTest):
 
 class ResumeItemEditViewTest(UnitTest):
     def test_resume_edit_correct_template_returned(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         response = self.client.get(f'/resume/{resume_item.id}/edit/')
         self.assertTemplateUsed(response, 'resume/new_resume_item.html')
 
     def test_resume_edit_uses_form(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         response = self.client.get(f'/resume/{resume_item.id}/edit/')
         self.assertIsInstance(response.context['form'], ResumeItemForm)
 
     def test_resume_edit_displays_item(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         response = self.client.get(f'/resume/{resume_item.id}/edit/')
         self.assertContains(response, "New Skill")
 
     def test_resume_edit_displays_correct_item(self):
+        self.set_up_user()
         resume_item_1 = ResumeItem.objects.create(section="SK",
                                                   title="New Skill 1")
         resume_item_2 = ResumeItem.objects.create(section="SK",
@@ -164,6 +173,7 @@ class ResumeItemEditViewTest(UnitTest):
         self.assertNotContains(response, "Best Skill 2")
 
     def test_resume_edit_can_edit_item(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         response = self.client.get(f'/resume/{resume_item.id}/edit/')
@@ -178,6 +188,7 @@ class ResumeItemEditViewTest(UnitTest):
         self.assertEqual(ResumeItem.objects.first().title, "Best Skill")
 
     def test_resume_edit_redirects_to_resume_view(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         response = self.client.post(f'/resume/{resume_item.id}/edit/',
@@ -188,6 +199,7 @@ class ResumeItemEditViewTest(UnitTest):
         self.assertRedirects(response, '/resume/')
 
     def post_invalid_input(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         return self.client.post(f'/resume/{resume_item.id}/edit/',
@@ -210,6 +222,7 @@ class ResumeItemEditViewTest(UnitTest):
         self.assertIsInstance(response.context['form'], ResumeItemForm)
 
     def test_resume_edit_for_unknown_item_gives_404(self):
+        self.set_up_user()
         response = self.client.post(f'/resume/101/edit/',
                                     data={
                                         'section': 'SK',
@@ -220,12 +233,14 @@ class ResumeItemEditViewTest(UnitTest):
 
 class ResumeItemDeleteViewTest(UnitTest):
     def test_resume_delete_redirects_to_resume_view(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         response = self.client.post(f'/resume/{resume_item.id}/delete/')
         self.assertRedirects(response, '/resume/')
 
     def test_resume_delete_successfully_deletes_item(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         self.assertEqual(ResumeItem.objects.count(), 1)
@@ -233,6 +248,7 @@ class ResumeItemDeleteViewTest(UnitTest):
         self.assertEqual(ResumeItem.objects.count(), 0)
 
     def test_resume_delete_deletes_correct_item(self):
+        self.set_up_user()
         resume_item_1 = ResumeItem.objects.create(section="SK",
                                                   title="New Skill 1")
         resume_item_2 = ResumeItem.objects.create(section="SK",
@@ -244,6 +260,7 @@ class ResumeItemDeleteViewTest(UnitTest):
         self.assertEqual(ResumeItem.objects.first().title, "Best Skill 2")
 
     def test_resume_delete_removes_item_from_resume_view(self):
+        self.set_up_user()
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
         resume = self.client.get('/resume/')
@@ -253,6 +270,7 @@ class ResumeItemDeleteViewTest(UnitTest):
         self.assertNotContains(resume, "New Skill")
 
     def test_resume_delete_removes_correct_item_from_resume_view(self):
+        self.set_up_user()
         resume_item_1 = ResumeItem.objects.create(section="SK",
                                                   title="New Skill 1")
         resume_item_2 = ResumeItem.objects.create(section="SK",
@@ -266,5 +284,6 @@ class ResumeItemDeleteViewTest(UnitTest):
         self.assertContains(resume, "Best Skill 2")
 
     def test_resume_delete_for_unknown_item_gives_404(self):
+        self.set_up_user()
         response = self.client.post(f'/resume/101/delete/')
         self.assertEqual(response.status_code, 404)

@@ -17,3 +17,9 @@ class UnitTest(TestCase):
     def tear_down(self):
         user = User.objects.get(username="test_user")
         user.delete()
+
+    def set_up_user(self):
+        user = User.objects.create_user('test_user', 'test@user.com',
+                                        'mostsecurepasswordever')
+        self.client.login(username='test_user',
+                          password='mostsecurepasswordever')
