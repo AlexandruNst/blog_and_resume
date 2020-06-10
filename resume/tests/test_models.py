@@ -16,3 +16,13 @@ class ResumeItemModelTest(UnitTest):
         with self.assertRaises(ValidationError):
             resume_item.save()
             resume_item.full_clean()
+
+    def test_resume_item_list_ordering(self):
+        resume_item_1 = ResumeItem.objects.create(section="SK",
+                                                  title="New Skill 1")
+        resume_item_2 = ResumeItem.objects.create(section="SK",
+                                                  title="Best Skill 2")
+        resume_item_3 = ResumeItem.objects.create(section="SK",
+                                                  title="Amazing Skill 3")
+        self.assertEqual(list(ResumeItem.objects.all()),
+                         [resume_item_1, resume_item_2, resume_item_3])
