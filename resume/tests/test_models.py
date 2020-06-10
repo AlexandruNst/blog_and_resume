@@ -65,3 +65,11 @@ class ArticleModelTest(UnitTest):
             article.save()
             article.full_clean()
 
+    def test_article_list_ordering(self):
+        user = User.objects.create_user('test_user', 'test@user.com',
+                                        'mostsecurepasswordever')
+        article1 = Article.objects.create(author=user)
+        article2 = Article.objects.create(author=user)
+        article3 = Article.objects.create(author=user)
+        self.assertEqual(list(Article.objects.all()),
+                         [article1, article2, article3])
