@@ -140,3 +140,78 @@ class ResumeNewItemTest(UnitTest):
                          list(education))
         self.assertEqual(list(response.context['technical_interests_list']),
                          list(technical_interests))
+
+
+class ResumeItemEditTest(UnitTest):
+    def test_resume_edit_correct_template_returned(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.get(f'/resume/{resume_item.id}/edit/')
+        self.assertTemplateUsed(response, 'resume/new_resume_item.html')
+
+    def test_resume_edit_uses_form(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.get(f'/resume/{resume_item.id}/edit/')
+        self.assertIsInstance(response.context['form'], ResumeItemForm)
+
+    def test_resume_edit_displays_item(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.get(f'/resume/{resume_item.id}/edit/')
+        self.assertContains(response, "New Skill")
+
+    def test_resume_edit_displays_correct_item(self):
+        resume_item_1 = ResumeItem.objects.create(section="SK",
+                                                  title="New Skill 1")
+        resume_item_2 = ResumeItem.objects.create(section="SK",
+                                                  title="Best Skill 2")
+        response = self.client.get(f'/resume/{resume_item_1.id}/edit/')
+        self.assertContains(response, "New Skill 1")
+        self.assertNotContains(response, "Best Skill 2")
+
+    def test_resume_edit_can_edit_item(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.get(f'/resume/{resume_item.id}/edit/')
+        self.assertContains(response, "New Skill")
+
+        response = self.client.post(f'/resume/{resume_item.id}/edit/',
+                                    data={
+                                        'section': 'SK',
+                                        'title': 'Best Skill',
+                                    })
+        self.assertNotEqual(ResumeItem.objects.first().title, "New Skill")
+        self.assertEqual(ResumeItem.objects.first().title, "Best Skill")
+
+    def test_resume_edit_redirects_to_resume_view(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.post(f'/resume/{resume_item.id}/edit/',
+                                    data={
+                                        'section': 'SK',
+                                        'title': 'Best Skill',
+                                    })
+        self.assertRedirects(response, '/resume/')
+
+    def post_invalid_input(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        return self.client.post(f'/resume/{resume_item.id}/edit/',
+                                data={
+                                    'section': '',
+                                    'title': '',
+                                })
+
+    def test_resume_edit_invalid_input_not_saved(self):
+        self.post_invalid_input()
+        self.assertEqual(ResumeItem.objects.first().title, "New Skill")
+
+    def test_resume_edit_invalid_input_renders_new_item_template(self):
+        response = self.post_invalid_input()
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'resume/new_resume_item.html')
+
+    def test_resume_edit_invalid_input_passes_form_to_template(self):
+        response = self.post_invalid_input()
+        self.assertIsInstance(response.context['form'], ResumeItemForm)
