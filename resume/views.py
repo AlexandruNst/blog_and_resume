@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import ResumeItemForm
 from .models import ResumeItem
@@ -29,4 +29,17 @@ def resume_new(request):
             return redirect('resume')
     else:
         form = ResumeItemForm()
+    return render(request, 'resume/new_resume_item.html', {'form': form})
+
+
+def resume_edit(request, pk):
+    resume_item = get_object_or_404(ResumeItem, pk=pk)
+    if request.method == "POST":
+        form = ResumeItemForm(request.POST, instance=resume_item)
+        if form.is_valid():
+            resume_item = form.save(commit=False)
+            resume_item.save()
+            return redirect('resume')
+    else:
+        form = ResumeItemForm(instance=resume_item)
     return render(request, 'resume/new_resume_item.html', {'form': form})
