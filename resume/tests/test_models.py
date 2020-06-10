@@ -2,6 +2,7 @@ from .base import UnitTest
 from resume.models import ResumeItem
 from blog.models import Article
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 
 class ResumeItemModelTest(UnitTest):
@@ -50,3 +51,17 @@ class ResumeItemModelTest(UnitTest):
             'Line 2',
             'Line 3',
         ])
+
+
+class ArticleModelTest(UnitTest):
+    def test_all_sections_must_be_filled(self):
+        article = Article(author=None,
+                          title='',
+                          text='',
+                          description='',
+                          tags='',
+                          created_date='')
+        with self.assertRaises(ValidationError):
+            article.save()
+            article.full_clean()
+
