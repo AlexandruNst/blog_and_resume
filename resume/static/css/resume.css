@@ -1,3 +1,7 @@
 .-resume-svg {
   width: 100%;
 }
+
+.-resume-container {
+  overflow-wrap: break-word;
+}

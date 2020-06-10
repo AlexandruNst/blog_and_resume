@@ -10,11 +10,20 @@
     <div class="container">
         <div class="row">
             <div class="col"></div>
-            <div class="col-12 col-sm-11 col-md-8 col-lg-6 col-xl-6">
+            <div class="col-12 col-sm-11 col-md-8 col-lg-6 col-xl-6 -resume-container">
                 <p class="font-title font-big-title font-normal-color text-center">Alexandru Nastase</p>
                 <!-- Skills section -->
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/skills.svg' %}" alt="">
                 <p>Some text</p>
+                {% for skill in skills_list %}
+                    <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{skill.title}}</p>
+                    <p class="font-description">{{skill.timeframe}}</p>
+                    <ul class="ml-3 pl-0">
+                        {% for line in skill.get_text_lines %}
+                            <li>{{line}}</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
                 <!-- END Skills section -->
                 <!-- Experience section -->
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/experience.svg' %}" alt="">
@@ -32,7 +41,7 @@
             <div class="col"></div>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="#" class="-bttn -bttn-blue-filled -rounded mt-5" id="edit-resume-button">Edit resume</a>
+            <a href="/resume/new" class="-bttn -bttn-blue-filled -rounded mt-5" id="edit-resume-button">Edit resume</a>
         </div>
         <div class="d-flex justify-content-center mt-2">
             <p class="font-description">Must be logged in to edit</p>
