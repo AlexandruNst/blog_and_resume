@@ -215,3 +215,55 @@ class ResumeItemEditTest(UnitTest):
     def test_resume_edit_invalid_input_passes_form_to_template(self):
         response = self.post_invalid_input()
         self.assertIsInstance(response.context['form'], ResumeItemForm)
+
+
+class ResumeItemDeleteViewTest(UnitTest):
+    def test_resume_delete_redirects_to_resume_view(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.post(f'/resume/{resume_item.id}/delete/')
+        self.assertRedirects(response, '/resume/')
+
+    def test_resume_delete_successfully_deletes_item(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        self.assertEqual(ResumeItem.objects.count(), 1)
+        response = self.client.post(f'/resume/{resume_item.id}/delete/')
+        self.assertEqual(ResumeItem.objects.count(), 0)
+
+    def test_resume_delete_deletes_correct_item(self):
+        resume_item_1 = ResumeItem.objects.create(section="SK",
+                                                  title="New Skill 1")
+        resume_item_2 = ResumeItem.objects.create(section="SK",
+                                                  title="Best Skill 2")
+        self.assertEqual(ResumeItem.objects.count(), 2)
+        response = self.client.post(f'/resume/{resume_item_1.id}/delete/')
+        self.assertEqual(ResumeItem.objects.count(), 1)
+        self.assertNotEqual(ResumeItem.objects.first().title, "New Skill 1")
+        self.assertEqual(ResumeItem.objects.first().title, "Best Skill 2")
+
+    def test_resume_delete_removes_item_from_resume_view(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        resume = self.client.get('/resume/')
+        self.assertContains(resume, "New Skill")
+        response = self.client.post(f'/resume/{resume_item.id}/delete/')
+        resume = self.client.get('/resume/')
+        self.assertNotContains(resume, "New Skill")
+
+    def test_resume_delete_removes_correct_item_from_resume_view(self):
+        resume_item_1 = ResumeItem.objects.create(section="SK",
+                                                  title="New Skill 1")
+        resume_item_2 = ResumeItem.objects.create(section="SK",
+                                                  title="Best Skill 2")
+        resume = self.client.get('/resume/')
+        self.assertContains(resume, "New Skill 1")
+        self.assertContains(resume, "Best Skill 2")
+        response = self.client.post(f'/resume/{resume_item_1.id}/delete/')
+        resume = self.client.get('/resume/')
+        self.assertNotContains(resume, "New Skill 1")
+        self.assertContains(resume, "Best Skill 2")
+
+    def test_resume_delete_for_unknown_item_gives_404(self):
+        response = self.client.post(f'/resume/101/delete/')
+        self.assertEqual(response.status_code, 404)
