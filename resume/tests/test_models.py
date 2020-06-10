@@ -40,3 +40,13 @@ class ResumeItemModelTest(UnitTest):
                                                   title="Best Skill 2")
         self.assertTrue(resume_item_1.has_text())
         self.assertFalse(resume_item_2.has_text())
+
+    def test_get_text_lines(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill 1",
+                                                text="Line 1\nLine 2\nLine 3")
+        self.assertEqual(resume_item.get_text_lines(), [
+            'Line 1',
+            'Line 2',
+            'Line 3',
+        ])
