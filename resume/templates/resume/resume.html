@@ -22,11 +22,13 @@
                     {% endif %}
                     <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{skill.title}}</p>
                     <p class="font-description">{{skill.timeframe}}</p>
-                    <ul class="ml-3 pl-0">
-                        {% for line in skill.get_text_lines %}
-                            <li>{{line}}</li>
-                        {% endfor %}
-                    </ul>
+                    {% if skill.has_text %}
+                        <ul class="ml-3 pl-0">
+                            {% for line in skill.get_text_lines %}
+                                <li>{{line}}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 {% endfor %}
                 <!-- END Skills section -->
                 <!-- Experience section -->
