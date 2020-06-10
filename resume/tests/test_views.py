@@ -44,3 +44,9 @@ class ResumeNewItemTest(UnitTest):
         ResumeItem.objects.create(section="SK", title="New Skill")
         response = self.client.get('/resume/')
         self.assertContains(response, 'New Skill')
+
+    def test_can_display_experience(self):
+        self.set_up()
+        ResumeItem.objects.create(section="EX", title="New Experience")
+        response = self.client.get('/resume/')
+        self.assertContains(response, 'New Experience')
