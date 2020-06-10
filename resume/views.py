@@ -43,3 +43,9 @@ def resume_edit(request, pk):
     else:
         form = ResumeItemForm(instance=resume_item)
     return render(request, 'resume/new_resume_item.html', {'form': form})
+
+
+def resume_delete(request, pk):
+    resume_item = get_object_or_404(ResumeItem, pk=pk)
+    resume_item.delete()
+    return redirect("resume")
