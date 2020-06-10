@@ -193,3 +193,16 @@ class ResumeItemEditTest(UnitTest):
                                         'title': 'Best Skill',
                                     })
         self.assertRedirects(response, '/resume/')
+
+    def post_invalid_input(self, resume_item):
+        return self.client.post(f'/resume/{resume_item.id}/edit/',
+                                data={
+                                    'section': '',
+                                    'title': '',
+                                })
+
+    def test_resume_edit_invalid_input_not_saved(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        self.post_invalid_input(resume_item)
+        self.assertEqual(ResumeItem.objects.first().title, "New Skill")
