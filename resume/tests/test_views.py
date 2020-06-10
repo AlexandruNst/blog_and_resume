@@ -3,6 +3,7 @@ from blog.models import Article
 from django.contrib.auth.models import User
 from .base import UnitTest
 from resume.forms import ResumeItemForm
+from resume.models import ResumeItem
 
 
 class TemplateTest(UnitTest):
@@ -28,9 +29,8 @@ class TemplateTest(UnitTest):
 
 
 class ResumeNewItemTest(UnitTest):
-    UnitTest.set_up()
-
     def test_resume_new_correct_template_returned(self):
+        self.set_up()
         response = self.client.get('/resume/new')
         self.assertTemplateUsed(response, 'resume/new_resume_item.html')
 
@@ -41,3 +41,6 @@ class ResumeNewItemTest(UnitTest):
 
     def test_can_display_skill(self):
         self.set_up()
+        ResumeItem.objects.create(section="SK", title="New Skill")
+        response = self.client.get('/resume/')
+        self.assertContains(response, 'New Skill')
