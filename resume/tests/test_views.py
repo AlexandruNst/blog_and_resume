@@ -224,3 +224,9 @@ class ResumeItemDeleteTest(UnitTest):
         response = self.client.post(f'/resume/{resume_item.id}/delete/')
         self.assertRedirects(response, '/resume/')
 
+    def test_resume_delete_successfully_deletes_item(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        self.assertEqual(ResumeItem.objects.count(), 1)
+        response = self.client.post(f'/resume/{resume_item.id}/delete/')
+        self.assertEqual(ResumeItem.objects.count(), 0)
