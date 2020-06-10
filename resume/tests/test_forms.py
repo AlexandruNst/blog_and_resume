@@ -21,3 +21,7 @@ class ResumeItemFormTest(UnitTest):
     def test_validation_for_blank_title(self):
         form = ResumeItemForm(data={'section': 'SK', 'title': ''})
         self.assertFalse(form.is_valid())
+
+    def test_validation_for_having_just_section_and_title(self):
+        form = ResumeItemForm(data={'section': 'SK', 'title': 'Title'})
+        self.assertTrue(form.is_valid())
