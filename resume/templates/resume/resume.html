@@ -11,10 +11,9 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-12 col-sm-11 col-md-8 col-lg-6 col-xl-6 -resume-container">
-                <p class="font-title font-big-title font-normal-color text-center">Alexandru Nastase</p>
+                <p class="font-title font-big-title font-normal-color text-center mb-5">Alexandru Nastase</p>
                 <!-- Skills section -->
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/skills.svg' %}" alt="">
-                <p>Some text</p>
                 {% for skill in skills_list %}
                     {% if user.is_authenticated %}
                         <a href="{% url 'resume_edit' pk=skill.pk %}"><i class="fas fa-edit"></i></a>
@@ -23,7 +22,7 @@
                     <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{skill.title}}</p>
                     <p class="font-description">{{skill.timeframe}}</p>
                     {% if skill.has_text %}
-                        <ul class="ml-3 pl-0">
+                        <ul class="ml-3 pl-1">
                             {% for line in skill.get_text_lines %}
                                 <li>{{line}}</li>
                             {% endfor %}
@@ -33,15 +32,57 @@
                 <!-- END Skills section -->
                 <!-- Experience section -->
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/experience.svg' %}" alt="">
-                <p>Some text</p>
+                {% for ex in experience_list %}
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'resume_edit' pk=ex.pk %}"><i class="fas fa-edit"></i></a>
+                        <a href="{% url 'resume_delete' pk=ex.pk %}"><i class="fas fa-trash-alt"></i></a>
+                    {% endif %}
+                    <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{ex.title}}</p>
+                    <p class="font-description">{{ex.timeframe}}</p>
+                    {% if ex.has_text %}
+                        <ul class="ml-3 pl-1">
+                            {% for line in ex.get_text_lines %}
+                                <li>{{line}}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
                 <!-- END Experience section -->
                 <!-- Education section -->
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/education.svg' %}" alt="">
-                <p>Some text</p>
+                {% for ed in education_list %}
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'resume_edit' pk=ed.pk %}"><i class="fas fa-edit"></i></a>
+                        <a href="{% url 'resume_delete' pk=ed.pk %}"><i class="fas fa-trash-alt"></i></a>
+                    {% endif %}
+                    <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{ed.title}}</p>
+                    <p class="font-description">{{ed.timeframe}}</p>
+                    {% if ed.has_text %}
+                        <ul class="ml-3 pl-1">
+                            {% for line in ed.get_text_lines %}
+                                <li>{{line}}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
                 <!-- END Education section -->
                 <!-- Technical interests section -->
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/technical_interests.svg' %}" alt="">
-                <p>Some text</p>
+                {% for ti in technical_interests_list %}
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'resume_edit' pk=ti.pk %}"><i class="fas fa-edit"></i></a>
+                        <a href="{% url 'resume_delete' pk=ti.pk %}"><i class="fas fa-trash-alt"></i></a>
+                    {% endif %}
+                    <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{ti.title}}</p>
+                    <p class="font-description">{{ti.timeframe}}</p>
+                    {% if ti.has_text %}
+                        <ul class="ml-3 pl-1">
+                            {% for line in ti.get_text_lines %}
+                                <li>{{line}}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
                 <!-- END Technical interests section -->
             </div>
             <div class="col"></div>
