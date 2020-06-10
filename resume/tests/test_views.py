@@ -142,7 +142,7 @@ class ResumeNewItemTest(UnitTest):
                          list(technical_interests))
 
 
-class ResumeItemEditTest(UnitTest):
+class ResumeItemEditViewTest(UnitTest):
     def test_resume_edit_correct_template_returned(self):
         resume_item = ResumeItem.objects.create(section="SK",
                                                 title="New Skill")
@@ -215,3 +215,11 @@ class ResumeItemEditTest(UnitTest):
     def test_resume_edit_invalid_input_passes_form_to_template(self):
         response = self.post_invalid_input()
         self.assertIsInstance(response.context['form'], ResumeItemForm)
+
+    def test_resume_edit_for_unknown_item_gives_404(self):
+        response = self.client.post(f'/resume/101/edit/',
+                                    data={
+                                        'section': 'SK',
+                                        'title': 'New Skill',
+                                    })
+        self.assertEqual(response.status_code, 404)
