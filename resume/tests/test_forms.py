@@ -13,3 +13,7 @@ class ResumeItemFormTest(UnitTest):
         self.assertIn('name="timeframe"', form.as_p())
         self.assertIn('label for="id_text"', form.as_p())
         self.assertIn('name="text"', form.as_p())
+
+    def test_validation_for_blank_section(self):
+        form = ResumeItemForm(data={'section': ''})
+        self.assertFalse(form.is_valid())
