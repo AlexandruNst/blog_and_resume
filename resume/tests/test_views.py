@@ -99,3 +99,14 @@ class ResumeNewItemTest(UnitTest):
                                         'text': "Skill Text",
                                     })
         self.assertRedirects(response, '/resume/')
+
+    def post_invalid_input(self):
+        return self.client.post(f'/resume/new',
+                                data={
+                                    'section': '',
+                                    'title': '',
+                                })
+
+    def test_resume_new_invalid_input_not_saved(self):
+        self.post_invalid_input()
+        self.assertEqual(ResumeItem.objects.count(), 0)
