@@ -230,3 +230,14 @@ class ResumeItemDeleteTest(UnitTest):
         self.assertEqual(ResumeItem.objects.count(), 1)
         response = self.client.post(f'/resume/{resume_item.id}/delete/')
         self.assertEqual(ResumeItem.objects.count(), 0)
+
+    def test_resume_delete_deletes_correct_item(self):
+        resume_item_1 = ResumeItem.objects.create(section="SK",
+                                                  title="New Skill 1")
+        resume_item_2 = ResumeItem.objects.create(section="SK",
+                                                  title="Best Skill 2")
+        self.assertEqual(ResumeItem.objects.count(), 2)
+        response = self.client.post(f'/resume/{resume_item_1.id}/delete/')
+        self.assertEqual(ResumeItem.objects.count(), 1)
+        self.assertNotEqual(ResumeItem.objects.first().title, "New Skill 1")
+        self.assertEqual(ResumeItem.objects.first().title, "Best Skill 2")
