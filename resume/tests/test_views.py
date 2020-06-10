@@ -215,3 +215,12 @@ class ResumeItemEditTest(UnitTest):
     def test_resume_edit_invalid_input_passes_form_to_template(self):
         response = self.post_invalid_input()
         self.assertIsInstance(response.context['form'], ResumeItemForm)
+
+
+class ResumeItemDeleteTest(UnitTest):
+    def test_resume_delete_redirects_to_resume_view(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.post(f'/resume/{resume_item.id}/delete/')
+        self.assertRedirects(response, '/resume/')
+
