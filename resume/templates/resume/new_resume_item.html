@@ -1,0 +1,15 @@
+{% extends 'blog/base_nav_footer.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    {{block.super}}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/new_resume_item.css' %}"> {% endcomment %}
+{% endblock stylesheet %}
+
+{% block content %}
+    <p class="font-title font-big-title font-normal-color">New Resume Item</p>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="-bttn -bttn-blue-filled -rounded">Save</button>
+    </form>
+{% endblock content %}
