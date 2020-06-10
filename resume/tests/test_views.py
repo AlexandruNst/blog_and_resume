@@ -13,7 +13,7 @@ class TemplateTest(UnitTest):
         self.assertTemplateUsed(response, 'blog/featured.html')
 
     def test_all_articles_page_returns_correct_template(self):
-        self.set_up()
+        # self.set_up()
         response = self.client.get('/articles')
         self.assertTemplateUsed(response, 'blog/all_articles.html')
 
@@ -23,48 +23,48 @@ class TemplateTest(UnitTest):
         self.assertTemplateUsed(response, 'blog/article_detail.html')
 
     def test_resume_page_return_correct_template(self):
-        self.set_up()
+        # self.set_up()
         response = self.client.get('/resume/')
         self.assertTemplateUsed(response, 'resume/resume.html')
 
 
 class ResumeNewItemTest(UnitTest):
     def test_resume_new_correct_template_returned(self):
-        self.set_up()
+        # self.set_up()
         response = self.client.get('/resume/new')
         self.assertTemplateUsed(response, 'resume/new_resume_item.html')
 
     def test_resume_new_uses_form(self):
-        self.set_up()
+        # self.set_up()
         response = self.client.get('/resume/new')
         self.assertIsInstance(response.context['form'], ResumeItemForm)
 
     def test_can_display_skill(self):
-        self.set_up()
+        # self.set_up()
         ResumeItem.objects.create(section="SK", title="New Skill")
         response = self.client.get('/resume/')
         self.assertContains(response, 'New Skill')
 
     def test_can_display_experience(self):
-        self.set_up()
+        # self.set_up()
         ResumeItem.objects.create(section="EX", title="New Experience")
         response = self.client.get('/resume/')
         self.assertContains(response, 'New Experience')
 
     def test_can_display_education(self):
-        self.set_up()
+        # self.set_up()
         ResumeItem.objects.create(section="ED", title="New Education")
         response = self.client.get('/resume/')
         self.assertContains(response, 'New Education')
 
     def test_can_display_technical_interest(self):
-        self.set_up()
+        # self.set_up()
         ResumeItem.objects.create(section="TI", title="New Technical-Interest")
         response = self.client.get('/resume/')
         self.assertContains(response, 'New Technical-Interest')
 
     def test_can_display_multiple_resume_items(self):
-        self.set_up()
+        # self.set_up()
         ResumeItem.objects.create(section="SK", title="New Skill")
         ResumeItem.objects.create(section="EX", title="New Experience")
         ResumeItem.objects.create(section="ED", title="New Education")
@@ -74,3 +74,18 @@ class ResumeNewItemTest(UnitTest):
         self.assertContains(response, 'New Experience')
         self.assertContains(response, 'New Education')
         self.assertContains(response, 'New Technical-Interest')
+
+    def test_can_save_a_POST_request_to_resume(self):
+        self.client.post(f'/resume/new',
+                         data={
+                             'section': 'SK',
+                             'title': 'New Skill',
+                             'timeframe': 'some time',
+                             'text': "Skill Text",
+                         })
+        self.assertEqual(ResumeItem.objects.count(), 1)
+        new_item = ResumeItem.objects.first()
+        self.assertEqual(new_item.section, 'SK')
+        self.assertEqual(new_item.title, 'New Skill')
+        self.assertEqual(new_item.timeframe, 'some time')
+        self.assertEqual(new_item.text, 'Skill Text')
