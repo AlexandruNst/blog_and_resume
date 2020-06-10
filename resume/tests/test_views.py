@@ -28,8 +28,9 @@ class TemplateTest(UnitTest):
 
 
 class ResumeNewItemTest(UnitTest):
+    UnitTest.set_up()
+
     def test_resume_new_correct_template_returned(self):
-        self.set_up()
         response = self.client.get('/resume/new')
         self.assertTemplateUsed(response, 'resume/new_resume_item.html')
 
@@ -37,3 +38,6 @@ class ResumeNewItemTest(UnitTest):
         self.set_up()
         response = self.client.get('/resume/new')
         self.assertIsInstance(response.context['form'], ResumeItemForm)
+
+    def test_can_display_skill(self):
+        self.set_up()
