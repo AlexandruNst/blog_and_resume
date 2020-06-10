@@ -263,3 +263,7 @@ class ResumeItemDeleteViewTest(UnitTest):
         resume = self.client.get('/resume/')
         self.assertNotContains(resume, "New Skill 1")
         self.assertContains(resume, "Best Skill 2")
+
+    def test_resume_delete_for_unknown_item_gives_404(self):
+        response = self.client.post(f'/resume/101/delete/')
+        self.assertEqual(response.status_code, 404)
