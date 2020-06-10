@@ -140,3 +140,17 @@ class ResumeNewItemTest(UnitTest):
                          list(education))
         self.assertEqual(list(response.context['technical_interests_list']),
                          list(technical_interests))
+
+
+class ResumeItemEditTest(UnitTest):
+    def test_resume_edit_correct_template_returned(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.get(f'/resume/{resume_item.id}/edit/')
+        self.assertTemplateUsed(response, 'resume/new_resume_item.html')
+
+    def test_resume_edit_uses_form(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.get(f'/resume/{resume_item.id}/edit/')
+        self.assertIsInstance(response.context['form'], ResumeItemForm)
