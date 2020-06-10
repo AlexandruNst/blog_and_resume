@@ -24,9 +24,6 @@ class FunctionalTest(StaticLiveServerTestCase):
             'innerHTML')
         self.assertIn(search_item_name, content)
 
-    # def get_item_input_box(self):
-    #     return self.browser.find_element_by_id('id_text')
-
     # def wait_for_row_in_list_table(self, row_text):
     #     # table = self.browser.find_element_by_id('id_list_table')
     #     # rows = table.find_elements_by_tag_name('tr')
