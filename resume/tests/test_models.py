@@ -31,3 +31,12 @@ class ResumeItemModelTest(UnitTest):
         resume_item_1 = ResumeItem.objects.create(section="SK",
                                                   title="New Skill 1")
         self.assertEqual(str(resume_item_1), 'New Skill 1')
+
+    def test_has_text(self):
+        resume_item_1 = ResumeItem.objects.create(section="SK",
+                                                  title="New Skill 1",
+                                                  text="Skill text")
+        resume_item_2 = ResumeItem.objects.create(section="SK",
+                                                  title="Best Skill 2")
+        self.assertTrue(resume_item_1.has_text())
+        self.assertFalse(resume_item_2.has_text())
