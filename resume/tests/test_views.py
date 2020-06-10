@@ -2,6 +2,7 @@ from django.test import TestCase
 from blog.models import Article
 from django.contrib.auth.models import User
 from .base import UnitTest
+from resume.forms import ResumeItemForm
 
 
 class TemplateTest(UnitTest):
@@ -31,3 +32,8 @@ class ResumeNewItemTest(UnitTest):
         self.set_up()
         response = self.client.get('/resume/new')
         self.assertTemplateUsed(response, 'resume/new_resume_item.html')
+
+    def test_resume_new_uses_form(self):
+        self.set_up()
+        response = self.client.get('/resume/new')
+        self.assertIsInstance(response.context['form'], ResumeItemForm)
