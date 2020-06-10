@@ -3,13 +3,15 @@
 
 {% block stylesheet %}
     {{block.super}}
-    {% comment %} <link rel="stylesheet" href="{% static 'css/new_resume_item.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/new_resume_item.css' %}">
 {% endblock stylesheet %}
 
 {% block content %}
-    <p class="font-title font-big-title font-normal-color">New Resume Item</p>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="-bttn -bttn-blue-filled -rounded">Save</button>
-    </form>
+    <p class="font-title font-big-title font-normal-color text-center">New Resume Item</p>
+    <div class="container -form-container justify-content-center d-flex">
+        <form method="POST" class="post-form d-flex flex-column align-items-center">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="-bttn -bttn-blue-filled -rounded">Save</button>
+        </form>
+    </div>
 {% endblock content %}

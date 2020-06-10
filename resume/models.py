@@ -11,7 +11,7 @@ class ResumeItem(models.Model):
     section = models.CharField(max_length=2, choices=SECTIONS)
     title = models.CharField(max_length=200)
     timeframe = models.CharField(max_length=200, blank=True)
-    text = models.TextField(blank=True)
+    text = models.TextField(blank=True, )
 
     def get_text_lines(self):
         return self.text.split('\n')

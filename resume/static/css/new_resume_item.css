@@ -1,0 +1,13 @@
+.-form-container {
+}
+
+#id_text {
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+}
+
+label {
+  display: block;
+  text-align: center;
+}
