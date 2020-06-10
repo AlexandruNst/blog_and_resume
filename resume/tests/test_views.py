@@ -250,3 +250,16 @@ class ResumeItemDeleteViewTest(UnitTest):
         response = self.client.post(f'/resume/{resume_item.id}/delete/')
         resume = self.client.get('/resume/')
         self.assertNotContains(resume, "New Skill")
+
+    def test_resume_delete_removes_correct_item_from_resume_view(self):
+        resume_item_1 = ResumeItem.objects.create(section="SK",
+                                                  title="New Skill 1")
+        resume_item_2 = ResumeItem.objects.create(section="SK",
+                                                  title="Best Skill 2")
+        resume = self.client.get('/resume/')
+        self.assertContains(resume, "New Skill 1")
+        self.assertContains(resume, "Best Skill 2")
+        response = self.client.post(f'/resume/{resume_item_1.id}/delete/')
+        resume = self.client.get('/resume/')
+        self.assertNotContains(resume, "New Skill 1")
+        self.assertContains(resume, "Best Skill 2")
