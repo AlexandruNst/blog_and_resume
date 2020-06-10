@@ -110,3 +110,8 @@ class ResumeNewItemTest(UnitTest):
     def test_resume_new_invalid_input_not_saved(self):
         self.post_invalid_input()
         self.assertEqual(ResumeItem.objects.count(), 0)
+
+    def test_resume_new_invalid_input_renders_new_item_template(self):
+        response = self.post_invalid_input()
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'resume/new_resume_item.html')
