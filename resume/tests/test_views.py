@@ -169,3 +169,17 @@ class ResumeItemEditTest(UnitTest):
         response = self.client.get(f'/resume/{resume_item_1.id}/edit/')
         self.assertContains(response, "New Skill 1")
         self.assertNotContains(response, "Best Skill 2")
+
+    def test_resume_edit_can_edit_item(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.get(f'/resume/{resume_item.id}/edit/')
+        self.assertContains(response, "New Skill")
+
+        response = self.client.post(f'/resume/{resume_item.id}/edit/',
+                                    data={
+                                        'section': 'SK',
+                                        'title': 'Best Skill',
+                                    })
+        self.assertNotEqual(ResumeItem.objects.first().title, "New Skill")
+        self.assertEqual(ResumeItem.objects.first().title, "Best Skill")
