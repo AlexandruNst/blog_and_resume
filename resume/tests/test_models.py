@@ -91,6 +91,10 @@ class ArticleModelTest(UnitTest):
                                timezone.now(),
                                delta=timedelta(seconds=2))
 
+    def test_string_representation(self):
+        article = self.create_dummy_article()
+        self.assertEqual(str(article), 'title')
+
     def test_get_list_of_tags(self):
         article = self.create_dummy_article()
         self.assertEqual(article.get_list_of_tags(),
