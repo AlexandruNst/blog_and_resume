@@ -211,3 +211,7 @@ class ResumeItemEditTest(UnitTest):
         response = self.post_invalid_input()
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'resume/new_resume_item.html')
+
+    def test_resume_edit_invalid_input_passes_form_to_template(self):
+        response = self.post_invalid_input()
+        self.assertIsInstance(response.context['form'], ResumeItemForm)
