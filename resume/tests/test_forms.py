@@ -1,5 +1,6 @@
 from .base import UnitTest
 from resume.forms import ResumeItemForm
+from resume.models import ResumeItem
 
 
 class ResumeItemFormTest(UnitTest):
@@ -25,3 +26,10 @@ class ResumeItemFormTest(UnitTest):
     def test_validation_for_having_just_section_and_title(self):
         form = ResumeItemForm(data={'section': 'SK', 'title': 'Title'})
         self.assertTrue(form.is_valid())
+
+    def test_form_save_handles_saving_to_db(self):
+        form = ResumeItemForm(data={'section': 'SK', 'title': 'Title'})
+        resume_item = form.save()
+        self.assertEqual(resume_item, ResumeItem.objects.first())
+        self.assertEqual(resume_item.title, 'Title')
+        self.assertEqual(resume_item.section, "SK")
