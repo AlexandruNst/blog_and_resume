@@ -183,3 +183,13 @@ class ResumeItemEditTest(UnitTest):
                                     })
         self.assertNotEqual(ResumeItem.objects.first().title, "New Skill")
         self.assertEqual(ResumeItem.objects.first().title, "Best Skill")
+
+    def test_resume_edit_redirects_to_resume_view(self):
+        resume_item = ResumeItem.objects.create(section="SK",
+                                                title="New Skill")
+        response = self.client.post(f'/resume/{resume_item.id}/edit/',
+                                    data={
+                                        'section': 'SK',
+                                        'title': 'Best Skill',
+                                    })
+        self.assertRedirects(response, '/resume/')
