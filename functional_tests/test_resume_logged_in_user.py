@@ -86,7 +86,7 @@ class LoggedOutResumeUserTest(FunctionalTest):
         self.browser.find_element_by_class_name(
             '-resume-item-save-button').click()
 
-        # The he can see that the resume page is updated
+        # Then he can see that the resume page is updated
         self.cannot_see_on_page("New Skill")
         self.can_see_on_page('Best Skill Ever')
 
@@ -116,7 +116,7 @@ class LoggedOutResumeUserTest(FunctionalTest):
         # Andy notices the delete link for each item in the sections
         self.can_see_on_page('-edit-link-delete')
 
-        # His friend asked him to delete on of the items
-        # He click on it and notices the item disappears from the resume
+        # His friend asked him to delete one of the items
+        # He clicks on the delete link and notices the item disappears from the resume
         self.browser.find_element_by_class_name('-edit-link-delete').click()
         self.cannot_see_on_page("New Skill")
