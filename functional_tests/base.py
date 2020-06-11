@@ -3,6 +3,11 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 import time
+from django.contrib.auth.models import User
+from django.test import Client
+from blog.models import Article
+from resume.models import ResumeItem
+from django.utils import timezone
 
 MAX_WAIT = 10
 
@@ -10,6 +15,53 @@ MAX_WAIT = 10
 class FunctionalTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Firefox()
+        self.client = Client()
+        self.user = User.objects.create_superuser(
+            username='andy',
+            password='super_secret_password',
+            email='andy@bestfriend.com',
+            is_active=True)
+        self.user.save()
+        Article.objects.create(author=self.user,
+                               title='Title',
+                               description='Desc',
+                               text='Text',
+                               tags="tag1 tag2 tag3",
+                               created_date=timezone.now())
+        Article.objects.create(author=self.user,
+                               title='Title',
+                               description='Desc',
+                               text='Text',
+                               tags="tag1 tag2 tag3",
+                               created_date=timezone.now())
+        Article.objects.create(author=self.user,
+                               title='Title',
+                               description='Desc',
+                               text='Text',
+                               tags="tag1 tag2 tag3",
+                               created_date=timezone.now())
+        Article.objects.create(author=self.user,
+                               title='Title',
+                               description='Desc',
+                               text='Text',
+                               tags="tag1 tag2 tag3",
+                               created_date=timezone.now())
+        Article.objects.create(author=self.user,
+                               title='Title',
+                               description='Desc',
+                               text='Text',
+                               tags="tag1 tag2 tag3",
+                               created_date=timezone.now())
+        Article.objects.create(author=self.user,
+                               title='Title',
+                               description='Desc',
+                               text='Text',
+                               tags="tag1 tag2 tag3",
+                               created_date=timezone.now())
+        ResumeItem.objects.create(section="SK",
+                                  title="New Skill",
+                                  timeframe="past-present",
+                                  text="Text")
 
     def tearDown(self):
         self.browser.quit()

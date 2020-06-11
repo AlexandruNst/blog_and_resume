@@ -1,10 +1,10 @@
 from .base import FunctionalTest
 
 
-class LoggedOutUserTest(FunctionalTest):
+class LoggedOutResumeUserTest(FunctionalTest):
     def test_resume(self):
         # Ellie goes to the resume page
-        self.browser.get('http://127.0.0.1:8000/resume/')
+        self.browser.get(self.live_server_url + '/resume/')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -41,7 +41,7 @@ class LoggedOutUserTest(FunctionalTest):
 
         # Since she doesn't have an account, she realises she really has
         # no way to edit her friend's resume. She goes back to the resume page
-        self.browser.get('http://127.0.0.1:8000/resume/')
+        self.browser.get(self.live_server_url + '/resume/')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
         self.can_see_on_page('-resume-container')
@@ -49,7 +49,7 @@ class LoggedOutUserTest(FunctionalTest):
         # Since Ellie knows a bit about how her friend's site might work,
         # she decides to try changing the URL to access that she should
         # have an account in order to access
-        self.browser.get('http://127.0.0.1:8000/resume/new')
+        self.browser.get(self.live_server_url + '/resume/new')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -58,7 +58,7 @@ class LoggedOutUserTest(FunctionalTest):
 
         # She decides to try another possible URL that might give her
         # unauthorised access
-        self.browser.get('http://127.0.0.1:8000/resume/1/edit')
+        self.browser.get(self.live_server_url + '/resume/1/edit')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -66,7 +66,7 @@ class LoggedOutUserTest(FunctionalTest):
         self.can_see_on_page('Log in')
 
         # She decides to try one last time
-        self.browser.get('http://127.0.0.1:8000/resume/1/delete')
+        self.browser.get(self.live_server_url + '/resume/1/delete')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -74,60 +74,3 @@ class LoggedOutUserTest(FunctionalTest):
         self.can_see_on_page('Log in')
 
         # She realises there is no easy way to hack into her friend's app
-
-    def test_all_articles(self):
-        # Ellie goes to the all articles page
-        self.browser.get('http://127.0.0.1:8000/articles')
-        self.wait_for(
-            lambda: self.browser.find_elements_by_css_selector('.container'))
-
-        # She receives all existing articles
-        self.can_see_on_page('-article-container')
-
-        # She doesn't seem to find any way to modify the articles,
-        # which makes sense, since she is not an authorised user of the site
-        # with an active account
-        self.cannot_see_on_page('-edit-link')
-
-        # Since Ellie knows a bit about how her friend's site might work,
-        # she decides to try changing the URL to access that she should
-        # have an account in order to access
-        self.browser.get('http://127.0.0.1:8000/article/new')
-        self.wait_for(
-            lambda: self.browser.find_elements_by_css_selector('.container'))
-
-        # She is immediately stopped by the log in screen
-        self.can_see_on_page('Log in')
-
-        # She decides to try another possible URL that might give her
-        # unauthorised access
-        self.browser.get('http://127.0.0.1:8000/article/1/edit')
-        self.wait_for(
-            lambda: self.browser.find_elements_by_css_selector('.container'))
-
-        # She is immediately stopped by the log in screen again
-        self.can_see_on_page('Log in')
-
-        # She decides to try one last time
-        self.browser.get('http://127.0.0.1:8000/article/1/delete')
-        self.wait_for(
-            lambda: self.browser.find_elements_by_css_selector('.container'))
-
-        # She is immediately stopped by the log in screen again
-        self.can_see_on_page('Log in')
-
-        # She realises there is no easy way to hack into her friend's app
-
-    def test_article_detail(self):
-        # Ellie goes to the page detailing one of the articles
-        self.browser.get('http://127.0.0.1:8000/article/8/')
-        self.wait_for(
-            lambda: self.browser.find_elements_by_css_selector('.container'))
-
-        # She receives all existing articles
-        self.can_see_on_page('-article-text')
-
-        # She doesn't seem to find any way to modify the articles,
-        # which makes sense, since she is not an authorised user of the site
-        # with an active account
-        self.cannot_see_on_page('-edit-link')
