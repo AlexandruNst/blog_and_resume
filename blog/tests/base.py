@@ -13,9 +13,3 @@ class UnitTest(TestCase):
         article4 = Article.objects.create(author=user)
         article5 = Article.objects.create(author=user)
         article6 = Article.objects.create(author=user)
-
-    def set_up_user(self):
-        user = User.objects.create_user('test_user', 'test@user.com',
-                                        'mostsecurepasswordever')
-        self.client.login(username='test_user',
-                          password='mostsecurepasswordever')
