@@ -117,3 +117,17 @@ class LoggedOutUserTest(FunctionalTest):
         self.can_see_on_page('Log in')
 
         # She realises there is no easy way to hack into her friend's app
+
+    def test_article_detail(self):
+        # Ellie goes to the page detailing one of the articles
+        self.browser.get('http://127.0.0.1:8000/article/8/')
+        self.wait_for(
+            lambda: self.browser.find_elements_by_css_selector('.container'))
+
+        # She receives all existing articles
+        self.can_see_on_page('-article-text')
+
+        # She doesn't seem to find any way to modify the articles,
+        # which makes sense, since she is not an authorised user of the site
+        # with an active account
+        self.cannot_see_on_page('-edit-link')
