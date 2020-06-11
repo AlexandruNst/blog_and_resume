@@ -27,7 +27,8 @@ jobs:
           wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz
           tar -xvzf geckodriver*
           chmod +x geckodriver
-          export PATH=$PATH:/.
+          sudo mv geckodriver /usr/local/bin/
+          geckodriver --version
       - name: Run Tests
         run: |
           python manage.py test functional_tests
