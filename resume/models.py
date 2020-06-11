@@ -15,3 +15,9 @@ class ResumeItem(models.Model):
 
     def get_text_lines(self):
         return self.text.split('\n')
+
+    def has_text(self):
+        return self.text != ""
+
+    def __str__(self):
+        return self.title

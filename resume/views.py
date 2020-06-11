@@ -5,7 +5,6 @@ from .models import ResumeItem
 from django.shortcuts import redirect
 
 
-# @login_required
 def resume(request):
     skills = ResumeItem.objects.filter(section="SK")
     experience = ResumeItem.objects.filter(section="EX")
@@ -20,6 +19,7 @@ def resume(request):
         })
 
 
+@login_required
 def resume_new(request):
     if request.method == "POST":
         form = ResumeItemForm(request.POST)
@@ -32,6 +32,7 @@ def resume_new(request):
     return render(request, 'resume/new_resume_item.html', {'form': form})
 
 
+@login_required
 def resume_edit(request, pk):
     resume_item = get_object_or_404(ResumeItem, pk=pk)
     if request.method == "POST":
@@ -45,6 +46,7 @@ def resume_edit(request, pk):
     return render(request, 'resume/new_resume_item.html', {'form': form})
 
 
+@login_required
 def resume_delete(request, pk):
     resume_item = get_object_or_404(ResumeItem, pk=pk)
     resume_item.delete()

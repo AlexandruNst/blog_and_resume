@@ -9,12 +9,21 @@
 
 {% block content %}
 <p class="font-bold font-bigger text-center mb-5 mt-0 mt-lg-2">All articles</p>
+{% if user.is_authenticated %}
+    <p class="text-center">
+            <a href="/article/new" class="-new-article-button -bttn -bttn-blue-filled -rounded mt-5 d-inline-block mx-auto">New Article</a>
+        </p>
+{% endif %}
     <div class="container">
     
-        <div class="row">
+        <div class="row -article-container">
         
             {% for article in articles %}
                 <div class="-article -side-article d-inline-block col-12">
+                    {% if user.is_authenticated %}
+                        <a class="-edit-link -edit-link-edit" href="{% url 'article_edit' pk=article.pk %}"><i class="fas fa-edit"></i></a>
+                        <a class="-edit-link -edit-link-delete" href="{% url 'article_delete' pk=article.pk %}"><i class="fas fa-trash-alt"></i></a>
+                    {% endif %}
                     <a class="-side-article-anchor" href="{% url 'article_detail' pk=article.pk %}">
                         <img class="-article-img -side-article-img img-fluid float-left" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
                         <div class="d-inline-block -side-article-text pl-3">
