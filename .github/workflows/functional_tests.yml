@@ -1,4 +1,4 @@
-name: Functional Tests
+name: Django CI - Functional Tests
 
 on:
   push:
