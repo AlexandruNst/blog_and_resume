@@ -2,7 +2,7 @@ from .base import FunctionalTest
 
 
 class LoggedOutBlogUserTest(FunctionalTest):
-    def test_all_articles(self):
+    def test_blog(self):
         # Ellie goes to the all articles page
         self.browser.get('http://127.0.0.1:8000/articles')
         self.wait_for(
