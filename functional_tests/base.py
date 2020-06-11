@@ -19,6 +19,11 @@ class FunctionalTest(StaticLiveServerTestCase):
             'innerHTML')
         self.assertIn(search_item_name, content)
 
+    def cannot_see_on_page(self, search_item_name):
+        content = self.browser.find_element_by_id('content').get_attribute(
+            'innerHTML')
+        self.assertNotIn(search_item_name, content)
+
     def can_see_in_navbar(self, search_item_name):
         content = self.browser.find_element_by_id('navbar').get_attribute(
             'innerHTML')

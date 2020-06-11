@@ -21,8 +21,8 @@
             {% for article in articles %}
                 <div class="-article -side-article d-inline-block col-12">
                     {% if user.is_authenticated %}
-                        <a href="{% url 'article_edit' pk=article.pk %}"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'article_delete' pk=article.pk %}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="-edit-link" href="{% url 'article_edit' pk=article.pk %}"><i class="fas fa-edit"></i></a>
+                        <a class="-edit-link" href="{% url 'article_delete' pk=article.pk %}"><i class="fas fa-trash-alt"></i></a>
                     {% endif %}
                     <a class="-side-article-anchor" href="{% url 'article_detail' pk=article.pk %}">
                         <img class="-article-img -side-article-img img-fluid float-left" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
