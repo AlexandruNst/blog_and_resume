@@ -4,7 +4,7 @@ from .base import FunctionalTest
 class LoggedOutResumeUserTest(FunctionalTest):
     def test_resume(self):
         # Ellie goes to the resume page
-        self.browser.get('http://127.0.0.1:8000/resume/')
+        self.browser.get(self.live_server_url + '/resume/')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -41,7 +41,7 @@ class LoggedOutResumeUserTest(FunctionalTest):
 
         # Since she doesn't have an account, she realises she really has
         # no way to edit her friend's resume. She goes back to the resume page
-        self.browser.get('http://127.0.0.1:8000/resume/')
+        self.browser.get(self.live_server_url + '/resume/')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
         self.can_see_on_page('-resume-container')
@@ -49,7 +49,7 @@ class LoggedOutResumeUserTest(FunctionalTest):
         # Since Ellie knows a bit about how her friend's site might work,
         # she decides to try changing the URL to access that she should
         # have an account in order to access
-        self.browser.get('http://127.0.0.1:8000/resume/new')
+        self.browser.get(self.live_server_url + '/resume/new')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -58,7 +58,7 @@ class LoggedOutResumeUserTest(FunctionalTest):
 
         # She decides to try another possible URL that might give her
         # unauthorised access
-        self.browser.get('http://127.0.0.1:8000/resume/1/edit')
+        self.browser.get(self.live_server_url + '/resume/1/edit')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -66,7 +66,7 @@ class LoggedOutResumeUserTest(FunctionalTest):
         self.can_see_on_page('Log in')
 
         # She decides to try one last time
-        self.browser.get('http://127.0.0.1:8000/resume/1/delete')
+        self.browser.get(self.live_server_url + '/resume/1/delete')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 

@@ -4,7 +4,7 @@ from .base import FunctionalTest
 class LoggedOutBlogUserTest(FunctionalTest):
     def test_blog(self):
         # Ellie goes to the all articles page
-        self.browser.get('http://127.0.0.1:8000/articles')
+        self.browser.get(self.live_server_url + '/articles')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -19,7 +19,7 @@ class LoggedOutBlogUserTest(FunctionalTest):
         # Since Ellie knows a bit about how her friend's site might work,
         # she decides to try changing the URL to access that she should
         # have an account in order to access
-        self.browser.get('http://127.0.0.1:8000/article/new')
+        self.browser.get(self.live_server_url + '/article/new')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -28,7 +28,7 @@ class LoggedOutBlogUserTest(FunctionalTest):
 
         # She decides to try another possible URL that might give her
         # unauthorised access
-        self.browser.get('http://127.0.0.1:8000/article/1/edit')
+        self.browser.get(self.live_server_url + '/article/1/edit')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -36,7 +36,7 @@ class LoggedOutBlogUserTest(FunctionalTest):
         self.can_see_on_page('Log in')
 
         # She decides to try one last time
-        self.browser.get('http://127.0.0.1:8000/article/1/delete')
+        self.browser.get(self.live_server_url + '/article/1/delete')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
@@ -47,7 +47,7 @@ class LoggedOutBlogUserTest(FunctionalTest):
 
     def test_article_detail(self):
         # Ellie goes to the page detailing one of the articles
-        self.browser.get('http://127.0.0.1:8000/article/8/')
+        self.browser.get(self.live_server_url + '/article/6/')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
