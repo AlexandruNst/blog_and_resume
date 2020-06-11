@@ -8,7 +8,7 @@ class NewVisitorTest(FunctionalTest):
         # Ellie has heard that a friend of hers has published a website
         # where he writes blogposts and hosts a personal CV. She goes
         # to check out its homepage
-        self.browser.get('http://127.0.0.1:8000')
+        self.browser.get(self.live_server_url)
 
         # She notices the page title and header mention a blog and a resume
         self.assertIn('Blog and Resume', self.browser.title)
@@ -19,7 +19,7 @@ class NewVisitorTest(FunctionalTest):
         self.can_see_on_page('-side-article')
 
     def test_can_access_all_articles(self):
-        self.browser.get('http://127.0.0.1:8000')
+        self.browser.get(self.live_server_url)
 
         # She also sees that there is a button to view all articles
         # underneath the side articles
@@ -44,7 +44,7 @@ class NewVisitorTest(FunctionalTest):
         self.can_see_on_page('-side-article')
 
     def test_can_access_article_details(self):
-        self.browser.get('http://127.0.0.1:8000')
+        self.browser.get(self.live_server_url)
 
         # When Ellie clicks on an article, she is prompted with a page
         # containing the article details and text
@@ -63,7 +63,7 @@ class NewVisitorTest(FunctionalTest):
         self.can_see_on_page('-side-article')
 
     def test_navbar(self):
-        self.browser.get('http://127.0.0.1:8000')
+        self.browser.get(self.live_server_url)
 
         # Ellie notices the navbar
         self.assertIn(
@@ -80,7 +80,7 @@ class NewVisitorTest(FunctionalTest):
 
     def test_can_access_about(self):
         # Ellie goes on the About section of the site
-        self.browser.get('http://127.0.0.1:8000/about')
+        self.browser.get(self.live_server_url + '/about')
 
         # She is promped with some descriptive text about the project
         self.can_see_on_page('About the project')

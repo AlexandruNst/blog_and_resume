@@ -9,6 +9,12 @@
 {% block content %}
 
     <div class="container">
+        {% if user.is_authenticated %}
+            <div class="d-block w-100 mb-5">
+                <a class="-edit-link -edit-link-edit" href="{% url 'article_edit' pk=article.pk %}"><i class="fas fa-edit"></i></a>
+                <a class="-edit-link -edit-link-delete" href="{% url 'article_delete' pk=article.pk %}"><i class="fas fa-trash-alt"></i></a>
+            </div>
+        {% endif %}
         <p class="font-title font-big-title font-normal-color text-center mx-auto">{{article.title}}<p>
         <hr class="styled d-block">
         <div class="text-center">

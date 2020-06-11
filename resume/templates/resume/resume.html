@@ -16,8 +16,8 @@
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/skills.svg' %}" alt="">
                 {% for skill in skills_list %}
                     {% if user.is_authenticated %}
-                        <a href="{% url 'resume_edit' pk=skill.pk %}"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'resume_delete' pk=skill.pk %}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="-edit-link -edit-link-edit" href="{% url 'resume_edit' pk=skill.pk %}"><i class="fas fa-edit"></i></a>
+                        <a class="-edit-link -edit-link-delete" href="{% url 'resume_delete' pk=skill.pk %}"><i class="fas fa-trash-alt"></i></a>
                     {% endif %}
                     <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{skill.title}}</p>
                     <p class="font-description">{{skill.timeframe}}</p>
@@ -34,8 +34,8 @@
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/experience.svg' %}" alt="">
                 {% for ex in experience_list %}
                     {% if user.is_authenticated %}
-                        <a href="{% url 'resume_edit' pk=ex.pk %}"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'resume_delete' pk=ex.pk %}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="-edit-link -edit-link-edit" href="{% url 'resume_edit' pk=ex.pk %}"><i class="fas fa-edit"></i></a>
+                        <a class="-edit-link -edit-link-delete" href="{% url 'resume_delete' pk=ex.pk %}"><i class="fas fa-trash-alt"></i></a>
                     {% endif %}
                     <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{ex.title}}</p>
                     <p class="font-description">{{ex.timeframe}}</p>
@@ -52,8 +52,8 @@
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/education.svg' %}" alt="">
                 {% for ed in education_list %}
                     {% if user.is_authenticated %}
-                        <a href="{% url 'resume_edit' pk=ed.pk %}"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'resume_delete' pk=ed.pk %}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="-edit-link -edit-link-edit" href="{% url 'resume_edit' pk=ed.pk %}"><i class="fas fa-edit"></i></a>
+                        <a class="-edit-link -edit-link-delete" href="{% url 'resume_delete' pk=ed.pk %}"><i class="fas fa-trash-alt"></i></a>
                     {% endif %}
                     <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{ed.title}}</p>
                     <p class="font-description">{{ed.timeframe}}</p>
@@ -70,8 +70,8 @@
                 <img class="-resume-svg img-fluid" src="{% static 'res/img/svg/technical_interests.svg' %}" alt="">
                 {% for ti in technical_interests_list %}
                     {% if user.is_authenticated %}
-                        <a href="{% url 'resume_edit' pk=ti.pk %}"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'resume_delete' pk=ti.pk %}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="-edit-link -edit-link-edit" href="{% url 'resume_edit' pk=ti.pk %}"><i class="fas fa-edit"></i></a>
+                        <a class="-edit-link -edit-link-delete" href="{% url 'resume_delete' pk=ti.pk %}"><i class="fas fa-trash-alt"></i></a>
                     {% endif %}
                     <p class="font-title font-small-title font-normal-color pb-0 mb-0">{{ti.title}}</p>
                     <p class="font-description">{{ti.timeframe}}</p>
@@ -88,7 +88,7 @@
             <div class="col"></div>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="/resume/new" class="-bttn -bttn-blue-filled -rounded mt-5" id="edit-resume-button">Edit resume</a>
+            <a href="/resume/new" class="-edit-resume-button -bttn -bttn-blue-filled -rounded mt-5" id="edit-resume-button">Edit resume</a>
         </div>
         <div class="d-flex justify-content-center mt-2">
             <p class="font-description">Must be logged in to edit</p>
