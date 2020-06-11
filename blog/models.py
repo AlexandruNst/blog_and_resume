@@ -6,11 +6,11 @@ from django.utils import timezone
 class Article(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    description = models.TextField()
-    tags = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
+    title = models.CharField(max_length=200, blank=False)
+    text = models.TextField(blank=False)
+    description = models.TextField(blank=False)
+    tags = models.TextField(blank=False)
+    created_date = models.DateTimeField(default=timezone.now, blank=False)
 
     # published_date = models.DateTimeField(blank=True, null=True)
 
