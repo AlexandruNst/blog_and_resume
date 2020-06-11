@@ -8,14 +8,17 @@ from django.test import Client
 from blog.models import Article
 from resume.models import ResumeItem
 from django.utils import timezone
+from selenium.webdriver.firefox.options import Options
 
 MAX_WAIT = 10
 
 
 class FunctionalTest(StaticLiveServerTestCase):
     def setUp(self):
+        self.options = Options()
+        self.options.headless = True
         self.browser = webdriver.Firefox(
-            executable_path='/usr/local/bin/geckodriver')
+            executable_path='/usr/local/bin/geckodriver', options=self.options)
         self.client = Client()
         self.user = User.objects.create_superuser(
             username='andy',
