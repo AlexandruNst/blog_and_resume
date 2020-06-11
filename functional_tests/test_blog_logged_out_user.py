@@ -47,11 +47,12 @@ class LoggedOutBlogUserTest(FunctionalTest):
 
     def test_article_detail(self):
         # Ellie goes to the page detailing one of the articles
-        self.browser.get(self.live_server_url + '/article/6/')
+        self.browser.get(self.live_server_url + '/articles')
+        self.browser.find_element_by_class_name("-article-img").click()
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
-        # She receives all existing articles
+        # She receives the article content
         self.can_see_on_page('-article-text')
 
         # She doesn't seem to find any way to modify the articles,

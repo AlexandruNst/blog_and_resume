@@ -1,6 +1,7 @@
 from .base import FunctionalTest
 from django.utils import timezone
 from blog.models import Article
+import time
 
 
 class LoggedInBlogUserTest(FunctionalTest):
@@ -79,17 +80,15 @@ class LoggedInBlogUserTest(FunctionalTest):
         # Then he can see that the article page is updated
         self.can_see_on_page('Completely New')
 
-        # Oops! Andy realises he has missed a word in the new title
+        # Oops! Andy realises his friend has missed a word in the title
+        # of an article
         # He goes to the detail of that article
-        self.browser.get(self.live_server_url + '/article/12/')
+        self.browser.find_element_by_class_name("-article-img").click()
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
-        # He notices his (wrong) edit
+        # He notices thw wrong title when he click on the edit button
         self.browser.find_element_by_class_name('-edit-link-edit').click()
-        self.can_see_on_page('Completely New')
-        self.can_see_on_page('Desc')
-        self.can_see_on_page('Text')
 
         # His corrects his mistake
         self.browser.find_element_by_name("title").clear()
@@ -98,7 +97,6 @@ class LoggedInBlogUserTest(FunctionalTest):
         self.browser.find_element_by_class_name('-article-save-button').click()
 
         # Then he can see that the article page is updated
-        self.cannot_see_on_page('Completely New')
         self.can_see_on_page('Completely Brand New')
 
     def test_blog_delete(self):
@@ -113,7 +111,7 @@ class LoggedInBlogUserTest(FunctionalTest):
 
         # He goes to the blog page of the app
         self.browser.get(self.live_server_url + '/articles')
-        self.browser.set_window_size(1800, 768)
+        self.browser.set_window_size(1800, 1800)
 
         # He sees his friend's articles displayed
         self.can_see_on_page('-article-container')
@@ -128,8 +126,11 @@ class LoggedInBlogUserTest(FunctionalTest):
         self.browser.find_element_by_class_name('-edit-link-delete').click()
         self.assertEqual(Article.objects.count(), number_of_articles - 1)
 
+        # time.sleep(20)
         # He then goes to the second article page more down the list
-        self.browser.get(self.live_server_url + '/article/2/')
+        # self.browser.get(self.live_server_url + '/article/2/')
+        self.browser.find_element_by_class_name("-article-img").click()
+        # time.sleep(60)
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 

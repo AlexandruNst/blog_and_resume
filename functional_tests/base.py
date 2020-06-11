@@ -17,8 +17,7 @@ class FunctionalTest(StaticLiveServerTestCase):
     def setUp(self):
         self.options = Options()
         self.options.headless = True
-        self.browser = webdriver.Firefox(
-            executable_path='/usr/local/bin/geckodriver', options=self.options)
+        self.browser = webdriver.Firefox(options=self.options)
         self.client = Client()
         self.user = User.objects.create_superuser(
             username='andy',
