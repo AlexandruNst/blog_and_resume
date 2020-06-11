@@ -74,7 +74,7 @@ class LoggedInResumeUserTest(FunctionalTest):
         # Andy notices the edit link for each item in the sections
         self.can_see_on_page('-edit-link-edit')
 
-        # He click on it and notices he can edit the resume item
+        # He clicks on it and notices he can edit the resume item
         self.browser.find_element_by_class_name('-edit-link-edit').click()
         self.can_see_on_page('New Skill')
         self.can_see_on_page('past-present')

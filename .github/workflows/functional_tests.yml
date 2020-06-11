@@ -2,9 +2,9 @@ name: Django CI - Functional Tests
 
 on:
   push:
-    branches: [tdd-resume-tests]
+    branches: [tdd-resume]
   pull_request:
-    branches: [tdd-resume-tests]
+    branches: [tdd-resume]
 
 jobs:
   build:

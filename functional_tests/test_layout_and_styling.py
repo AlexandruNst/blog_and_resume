@@ -18,7 +18,7 @@ class LayoutAndStylingTest(FunctionalTest):
                                delta=10)
 
     def test_layout_and_styling_all_articles(self):
-        #Ellie goes to the article page
+        #Ellie goes to the all articles page
         self.browser.get(self.live_server_url + '/articles')
         self.browser.set_window_size(1024, 768)
         self.wait_for(

@@ -35,7 +35,7 @@ class LoggedOutBlogUserTest(FunctionalTest):
         # She is immediately stopped by the log in screen again
         self.can_see_on_page('Log in')
 
-        # She decides to try one last time
+        # She decides to try one last URL
         self.browser.get(self.live_server_url + '/article/1/delete')
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))

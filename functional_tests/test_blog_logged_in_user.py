@@ -15,7 +15,7 @@ class LoggedInBlogUserTest(FunctionalTest):
         password_input.send_keys('super_secret_password')
         self.browser.find_element_by_xpath('//input[@value="Log in"]').click()
 
-        # He goes to the blog page of the app
+        # He goes to the all articles page of the app
         self.browser.get(self.live_server_url + '/articles')
 
         # He sees his friend's articles displayed
@@ -56,7 +56,7 @@ class LoggedInBlogUserTest(FunctionalTest):
         password_input.send_keys('super_secret_password')
         self.browser.find_element_by_xpath('//input[@value="Log in"]').click()
 
-        # He goes to the blog page of the app
+        # He goes to the all articles page of the app
         self.browser.get(self.live_server_url + '/articles')
         self.browser.set_window_size(1800, 768)
 
@@ -82,15 +82,15 @@ class LoggedInBlogUserTest(FunctionalTest):
 
         # Oops! Andy realises his friend has missed a word in the title
         # of an article
-        # He goes to the detail of that article
+        # He goes to the detail page of that article
         self.browser.find_element_by_class_name("-article-img").click()
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
-        # He notices thw wrong title when he click on the edit button
+        # He notices the wrong title when he clicks on the edit button
         self.browser.find_element_by_class_name('-edit-link-edit').click()
 
-        # His corrects his mistake
+        # He corrects his mistake
         self.browser.find_element_by_name("title").clear()
         self.browser.find_element_by_name("title").send_keys(
             "Completely Brand New")
@@ -109,7 +109,7 @@ class LoggedInBlogUserTest(FunctionalTest):
         password_input.send_keys('super_secret_password')
         self.browser.find_element_by_xpath('//input[@value="Log in"]').click()
 
-        # He goes to the blog page of the app
+        # He goes to the all articles page of the app
         self.browser.get(self.live_server_url + '/articles')
         self.browser.set_window_size(1800, 1800)
 
@@ -126,15 +126,12 @@ class LoggedInBlogUserTest(FunctionalTest):
         self.browser.find_element_by_class_name('-edit-link-delete').click()
         self.assertEqual(Article.objects.count(), number_of_articles - 1)
 
-        # time.sleep(20)
-        # He then goes to the second article page more down the list
-        # self.browser.get(self.live_server_url + '/article/2/')
+        # He then goes to the second article's detail page
         self.browser.find_element_by_class_name("-article-img").click()
-        # time.sleep(60)
         self.wait_for(
             lambda: self.browser.find_elements_by_css_selector('.container'))
 
-        # He clicks on the delete link of one and notices the
+        # He clicks on the delete link and notices the
         # article disappears from the blog
         self.browser.find_element_by_class_name('-edit-link-delete').click()
         self.assertEqual(Article.objects.count(), number_of_articles - 2)
