@@ -1,7 +1,7 @@
 from .base import FunctionalTest
 
 
-class LoggedOutResumeUserTest(FunctionalTest):
+class LoggedInResumeUserTest(FunctionalTest):
     def test_resume_new(self):
         # Andy is a good friend of the creator of the app and
         # therefore has been provided credentials to log into it

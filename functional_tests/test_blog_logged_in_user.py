@@ -3,7 +3,7 @@ from django.utils import timezone
 from blog.models import Article
 
 
-class LoggedOutResumeUserTest(FunctionalTest):
+class LoggedInBlogUserTest(FunctionalTest):
     def test_blog_new(self):
         # Andy is a good friend of the creator of the app and
         # therefore has been provided credentials to log into it
@@ -82,6 +82,8 @@ class LoggedOutResumeUserTest(FunctionalTest):
         # Oops! Andy realises he has missed a word in the new title
         # He goes to the detail of that article
         self.browser.get(self.live_server_url + '/article/12/')
+        self.wait_for(
+            lambda: self.browser.find_elements_by_css_selector('.container'))
 
         # He notices his (wrong) edit
         self.browser.find_element_by_class_name('-edit-link-edit').click()
@@ -128,6 +130,8 @@ class LoggedOutResumeUserTest(FunctionalTest):
 
         # He then goes to the second article page more down the list
         self.browser.get(self.live_server_url + '/article/2/')
+        self.wait_for(
+            lambda: self.browser.find_elements_by_css_selector('.container'))
 
         # He clicks on the delete link of one and notices the
         # article disappears from the blog
