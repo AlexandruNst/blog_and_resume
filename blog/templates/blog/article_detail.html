@@ -7,6 +7,13 @@
 {% endblock stylesheet %}
 
 {% block content %}
+    <!-- Tag search form - hidden -->
+    <div class="d-none">
+        <form method="GET" action="{% url 'search' %}" id="tag-form">
+            <input type="text" id="tag-input" name="t">
+        </form>
+    </div>
+    <!-- END Tag search form -->
 
     <div class="container">
         {% if user.is_authenticated %}
@@ -60,7 +67,7 @@
         <div class="d-block mx-auto -tags-group mt-5">
             <p class="font-normal-color font-semi-bold">Tags</p>
             {% for tag in article.get_list_of_tags %}
-            <p class="mr-4 -ud font-normal-color d-inline-block"><a class="" href="#">{{tag}}</a></p>
+                <p class="mr-4 -ud font-normal-color d-inline-block"><a class="-tag" href="#">{{tag}}</a></p>
             {% endfor %}
         </div>
 
