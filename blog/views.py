@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Article
 from .forms import ArticleForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 
 def post_list(request):
@@ -39,6 +40,23 @@ def article_detail(request, pk):
 
 def about(request):
     return render(request, 'blog/about.html')
+
+
+def search(request):
+    if request.GET.get('q'):
+        query = request.GET.get('q')
+        articles = Article.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query)
+            | Q(text__icontains=query)).order_by("-created_date")
+        return render(request, 'blog/all_articles.html', {
+            'articles': articles,
+        })
+    else:
+        tag = request.GET.get('t')
+        articles = Article.objects.filter(tags__icontains=tag)
+        return render(request, 'blog/all_articles.html', {
+            'articles': articles,
+        })
 
 
 @login_required

@@ -11,4 +11,5 @@ urlpatterns = [
     path('article/<int:pk>/delete/',
          views.article_delete,
          name='article_delete'),
+    path('search', views.search, name='search')
 ]

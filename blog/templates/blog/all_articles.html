@@ -18,25 +18,29 @@
     
         <div class="row -article-container">
         
-            {% for article in articles %}
-                <div class="-article -side-article d-inline-block col-12">
-                    {% if user.is_authenticated %}
-                        <a class="-edit-link -edit-link-edit" href="{% url 'article_edit' pk=article.pk %}"><i class="fas fa-edit"></i></a>
-                        <a class="-edit-link -edit-link-delete" href="{% url 'article_delete' pk=article.pk %}"><i class="fas fa-trash-alt"></i></a>
+            {% if articles|length > 0 %}
+                {% for article in articles %}
+                    <div class="-article -side-article d-inline-block col-12">
+                        {% if user.is_authenticated %}
+                            <a class="-edit-link -edit-link-edit" href="{% url 'article_edit' pk=article.pk %}"><i class="fas fa-edit"></i></a>
+                            <a class="-edit-link -edit-link-delete" href="{% url 'article_delete' pk=article.pk %}"><i class="fas fa-trash-alt"></i></a>
+                        {% endif %}
+                        <a class="-side-article-anchor" href="{% url 'article_detail' pk=article.pk %}">
+                            <img class="-article-img -side-article-img img-fluid float-left" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                            <div class="d-inline-block -side-article-text pl-3">
+                                <p class="font-title font-big-title -side-article-title pr-0 pr-sm-2 pr-lg-0">{{ article.title }}<br></p>
+                                <p class="font-semi-bold font-description">{{ article.description }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% if forloop.last %}
+                    {% else %}
+                    <hr class="styled">
                     {% endif %}
-                    <a class="-side-article-anchor" href="{% url 'article_detail' pk=article.pk %}">
-                        <img class="-article-img -side-article-img img-fluid float-left" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
-                        <div class="d-inline-block -side-article-text pl-3">
-                            <p class="font-title font-big-title -side-article-title pr-0 pr-sm-2 pr-lg-0">{{ article.title }}<br></p>
-                            <p class="font-semi-bold font-description">{{ article.description }}</p>
-                        </div>
-                    </a>
-                </div>
-                {% if forloop.last %}
-                {% else %}
-                <hr class="styled">
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p class="font-description text-center w-100">No articles found</p>
+            {% endif %}
         </div>
          <p class="text-center">
             <a href="/" class="-home-button -bttn -bttn-blue-filled -rounded mt-5 d-inline-block mx-auto">Back to homepage</a>
