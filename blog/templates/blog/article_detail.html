@@ -58,7 +58,7 @@
 
         <!-- END Floating social buttons-->
 
-        <img class="-article-img img-fluid mx-auto d-block -rounded mt-4" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+        <img class="-article-img img-fluid mx-auto d-block -rounded mt-4" src="{% static article.get_image %}" alt="">
         <p class="-description-text font-normal-color font-semi-bold font-description d-block mx-auto">{{ article.description }}</p>
         <div class="-article-text font-normal-color d-block mx-auto">
             {{article.text|linebreaks}}
@@ -77,13 +77,13 @@
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <a href="{% url 'article_detail' pk=recommended_articles.0.pk %}" class="-recommended-anchor mb-5 mb-lg-0 d-block">
-                        <img class="img-fluid mx-auto d-block -rounded" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                        <img class="img-fluid mx-auto d-block -rounded" src="{% static recommended_articles.0.get_image %}" alt="">
                         <p class="-recommended-title font-title font-small-title font-normal-color mt-3">{{recommended_articles.0.title}}<p>
                     </a>
                 </div>
                 <div class="col-12 col-lg-6">
                 <a href="{% url 'article_detail' pk=recommended_articles.1.pk %}" class="-recommended-anchor">
-                    <img class="img-fluid mx-auto d-block -rounded" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                    <img class="img-fluid mx-auto d-block -rounded" src="{% static recommended_articles.1.get_image %}" alt="">
                     <p class="-recommended-title font-title font-small-title font-normal-color mt-3">{{recommended_articles.1.title}}<p>
                 </a></div>
             </div>

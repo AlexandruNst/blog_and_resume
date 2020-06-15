@@ -20,7 +20,7 @@
                 <div class="-article -featured-article pr-0 pr-lg-4">
                     <a class="-article-anchor" href="{% url 'article_detail' pk=featured_article.pk %}" id="-link-featured-article">
                         <p class="font-bold font-bigger text-center d-lg-none mb-4">Featured</p>
-                        <img class="-article-img img-fluid" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                        <img class="-article-img img-fluid" src="{% static featured_article.get_image %}" alt="">
                         <p class="-article-title pt-3 font-title font-big-title">{{ featured_article.title }}</p>
                         <p class="font-semi-bold font-description">{{ featured_article.description }}</p>
                         <div class="tags float-lg-right pt-lg-2">
@@ -39,7 +39,7 @@
                     {% for article in side_articles %}
                         <div class="-article -side-article d-inline-block col-12 col-sm-6 col-lg-12">
                             <a class="-article-anchor" href="{% url 'article_detail' pk=article.pk %}">
-                                <img class="-article-img -side-article-img img-fluid float-left" src="{% static 'res/img/article_jpg/desk.jpg' %}" alt="">
+                                <img class="-article-img -side-article-img img-fluid float-left" src="{% static article.get_image %}" alt="">
                                 <div class="d-inline-block -side-article-text pl-3 pl-sm-0 pl-lg-3 pt-0 pt-sm-2 pt-lg-0">
                                     <p class="font-title font-small-title -article-title -side-article-title pr-0 pr-sm-2 pr-lg-0">{{ article.title }} <br></p>
                                     <a href="{% url 'article_detail' pk=article.pk %}"><p class="d-inline-block -ud font-semi-bold">Read more</p></a>

@@ -10,6 +10,7 @@ class Article(models.Model):
     text = models.TextField(blank=False)
     description = models.TextField(blank=False)
     tags = models.TextField(blank=False)
+    image = models.CharField(max_length=200, blank=False)
     created_date = models.DateTimeField(default=timezone.now, blank=False)
 
     # published_date = models.DateTimeField(blank=True, null=True)
@@ -24,3 +25,6 @@ class Article(models.Model):
     def get_list_of_tags(self):
         split_tags = self.tags.split()
         return ["#" + tag for tag in split_tags]
+
+    def get_image(self):
+        return "res/img/article_jpg/" + self.image + ".jpg"

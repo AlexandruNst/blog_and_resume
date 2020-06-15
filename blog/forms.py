@@ -6,5 +6,5 @@ from .models import Article
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ("author", "title", "description", "text", "tags",
+        fields = ("author", "title", "description", "text", "tags", "image",
                   "created_date")
