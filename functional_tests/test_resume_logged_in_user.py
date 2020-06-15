@@ -30,7 +30,7 @@ class LoggedInResumeUserTest(FunctionalTest):
 
         # When he clicks on it, he can now add a resume item
         self.browser.find_element_by_class_name('-edit-resume-button').click()
-        self.can_see_on_page('New Resume Item')
+        self.can_see_on_page('Resume Item')
 
         # Andy has talked to his friend yesterday. He has been asked to
         # introduce a new entry into the resume, since his friend is busy
