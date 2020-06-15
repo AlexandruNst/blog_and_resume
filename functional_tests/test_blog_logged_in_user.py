@@ -39,6 +39,7 @@ class LoggedInBlogUserTest(FunctionalTest):
         self.browser.find_element_by_name("text").send_keys("New Text")
         self.browser.find_element_by_name("tags").send_keys(
             "newtag1 newtag2 newtag3")
+        self.browser.find_element_by_name("image").send_keys("desk")
         self.browser.find_element_by_name("created_date").send_keys(
             str(timezone.now()))
         self.browser.find_element_by_class_name('-article-save-button').click()
