@@ -76,7 +76,7 @@ class NewVisitorTest(FunctionalTest):
 
         # She also notices all other sections of the site listed in the navbar
         self.can_see_in_navbar("Articles")
-        self.can_see_in_navbar("Resume")
+        self.can_see_in_navbar("Personal CV")
 
     def test_can_access_about(self):
         # Ellie goes on the About section of the site
