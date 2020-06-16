@@ -11,7 +11,8 @@ class NewVisitorTest(FunctionalTest):
         self.browser.get(self.live_server_url)
 
         # She notices the page title and header mention a blog and a resume
-        self.assertIn('Blog and Resume', self.browser.title)
+        self.assertIn('Bridging Coursework - Blog and Personal CV',
+                      self.browser.title)
 
         # Ellie is then prompted with a page with a featured article
         # and multiple side articles
