@@ -6,10 +6,11 @@ from django.shortcuts import redirect
 
 
 def resume(request):
-    skills = ResumeItem.objects.filter(section="SK")
-    experience = ResumeItem.objects.filter(section="EX")
-    education = ResumeItem.objects.filter(section="ED")
-    technical_interests = ResumeItem.objects.filter(section="TI")
+    skills = list(reversed(ResumeItem.objects.filter(section="SK")))
+    experience = list(reversed(ResumeItem.objects.filter(section="EX")))
+    education = list(reversed(ResumeItem.objects.filter(section="ED")))
+    technical_interests = list(
+        reversed(ResumeItem.objects.filter(section="TI")))
     return render(
         request, 'resume/resume.html', {
             'skills_list': skills,

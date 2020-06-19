@@ -27,7 +27,7 @@
                         {% endif %}
                         <a class="-side-article-anchor" href="{% url 'article_detail' pk=article.pk %}">
                             <img class="-article-img -side-article-img img-fluid float-left" src="{% static article.get_image %}" alt="">
-                            <div class="d-inline-block -side-article-text pl-3">
+                            <div class="d-inline-block -side-article-text pl-0 pl-lg-3 pt-3 pt-lg-0">
                                 <p class="font-title font-big-title -side-article-title pr-0 pr-sm-2 pr-lg-0">{{ article.title }}<br></p>
                                 <p class="font-semi-bold font-description">{{ article.description }}</p>
                             </div>

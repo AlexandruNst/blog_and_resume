@@ -47,7 +47,7 @@ def search(request):
         query = request.GET.get('q')
         articles = Article.objects.filter(
             Q(title__icontains=query) | Q(description__icontains=query)
-            | Q(text__icontains=query)).order_by("-created_date")
+            | Q(text__icontains=query)).order_by('-created_date')
         return render(request, 'blog/all_articles.html', {
             'articles': articles,
         })
