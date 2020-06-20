@@ -23,7 +23,7 @@ a:hover {
 
 .tags {
   color: #4b83eb;
-  max-width: 70%;
+  max-width: 100%;
   overflow-wrap: break-word;
 }
 
@@ -37,6 +37,12 @@ a:hover {
 
 .-side-article-img {
   width: 50%;
+}
+
+.-read-more-button-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 /* // Small devices (landscape phones, 576px and up) */
@@ -57,6 +63,14 @@ a:hover {
 @media (min-width: 992px) {
   .-side-article-img {
     width: 50%;
+  }
+
+  .tags {
+    max-width: 70%;
+  }
+
+  .-read-more-button-container {
+    display: unset;
   }
 }
 
