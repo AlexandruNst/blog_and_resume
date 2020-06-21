@@ -47,7 +47,8 @@ a:hover {
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-  .-side-article-img {
+  .-side-article-img,
+  .-side-article-text {
     width: 100%;
   }
 }
@@ -61,7 +62,8 @@ a:hover {
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .-side-article-img {
+  .-side-article-img,
+  .-side-article-text {
     width: 50%;
   }
 
