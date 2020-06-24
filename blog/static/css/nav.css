@@ -47,3 +47,7 @@ nav {
     height: 60px;
   }
 }
+
+.input-group-append {
+  cursor: pointer;
+}
