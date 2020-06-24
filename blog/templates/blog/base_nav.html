@@ -8,7 +8,7 @@
 
 
 {% block navbar %}
-<nav id="navbar" class="navbar navbar-expand-xl navbar-light bg-transparent">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent">
   <a class="navbar-brand" href="/">
     <img src="{% static 'res/img/svg/logo.svg' %}" alt="">
   </a>
@@ -16,8 +16,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto text-center">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto text-center">
       <li class="nav-item">
         <a class="nav-link" href="/articles"><span class="font-semi-bold" id="ud-link">Articles</span> <span class="sr-only">(current)</span></a>
       </li>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </form>
-    <div class="text-center mt-3 mt-xl-0">
+    <div class="text-center mt-3 mt-lg-0 mb-3 mb-lg-0">
     {% if user.is_authenticated %}
       <a href="/accounts/logout" class="-bttn -bttn-transparent-blue -rounded">Logout</a>
     {% else %}
