@@ -3,7 +3,7 @@
 
 {% block stylesheet %}
     {{block.super}}
-    {% comment %} <link rel="stylesheet" href="{% static 'css/article_detail.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock stylesheet %}
 
 {% block content %}
@@ -15,7 +15,7 @@
     
         <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
-            <table class="mx-auto">
+            {% comment %} <table class="mx-auto">
                 <tr>
                     <td>{{ form.username.label_tag }}</td>
                     <td class="-bttn-blue-filled">{{ form.username }}</td>
@@ -24,9 +24,17 @@
                     <td>{{ form.password.label_tag }}</td>
                     <td class="-rounded">{{ form.password }}</td>
                 </tr>
-            </table>
+            </table> {% endcomment %}
+            <div class="d-flex w-100 justify-content-center mt-4">
+                <div class="d-block">
+                    <p class="float-left mb-0 pb-0">{{ form.username.label_tag }}</p>
+                    <p>{{ form.username }}</p>
+                    <p class="float-left mb-0 pb-0">{{ form.password.label_tag }}</p>
+                    <p>{{ form.password }}</p>
+                </div>
+            </div>
     
-            <input type="submit" value="Log in" class="-bttn -bttn-blue-filled -rounded mt-5" />
+            <input type="submit" value="Log in" class="-bttn -bttn-blue-filled -rounded mt-4" />
             <input type="hidden" name="next" value="{{ next }}" />
         </form>
     </div>

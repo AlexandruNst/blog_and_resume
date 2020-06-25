@@ -1,0 +1,15 @@
+input#id_username,
+input#id_password {
+  border-radius: 9px;
+  height: 38px;
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #ced4da;
+  font-family: "Open Sans", sans-serif;
+  transition: 300ms;
+}
+
+input#id_username:focus,
+input#id_password:focus {
+  border: 1px solid #4b83eb;
+}
