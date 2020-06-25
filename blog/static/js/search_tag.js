@@ -1,5 +1,7 @@
 $(".input-group-append").click(function (e) {
-  $("#nav-form").submit();
+  if ($("#rounded-input").val().trim() != "") {
+    $("#nav-form").submit();
+  }
 });
 
 $(".-tag").click(function (e) {
